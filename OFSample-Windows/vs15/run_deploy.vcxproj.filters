@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\framework2015">
+      <UniqueIdentifier>{CE606559-3AF0-197C-C0C1-3065650C25E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\framework2015\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\framework2015\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\framework2015">
+      <UniqueIdentifier>{CE606559-3AF0-197C-C0C1-3065650C25E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\framework2015\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\framework2015\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\FreeImage">
+      <UniqueIdentifier>{1A6FCB04-0DC1-8C98-6458-18AEA2BB2C9A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\FreeImage\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\FreeImage\bin\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400">
+      <UniqueIdentifier>{FA7652CB-617A-4B0B-8689-AA555AB1D67C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv">
+      <UniqueIdentifier>{08A423D6-BE08-D00C-41EA-902370138AC5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv\build">
+      <UniqueIdentifier>{D5519164-BF26-36DA-740B-76CEFC1827F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv\build\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv\build\x86\vc14">
+      <UniqueIdentifier>{45B46177-BACC-2172-1216-A16BFB020661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv\build\x86\vc14\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400">
+      <UniqueIdentifier>{FA7652CB-617A-4B0B-8689-AA555AB1D67C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv">
+      <UniqueIdentifier>{08A423D6-BE08-D00C-41EA-902370138AC5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv\build">
+      <UniqueIdentifier>{D5519164-BF26-36DA-740B-76CEFC1827F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv\build\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv\build\x86\vc14">
+      <UniqueIdentifier>{45B46177-BACC-2172-1216-A16BFB020661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\opencv400\opencv\build\x86\vc14\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\curl">
+      <UniqueIdentifier>{A400525E-1755-1473-C382-AD778C5A587D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\curl\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\curl">
+      <UniqueIdentifier>{A400525E-1755-1473-C382-AD778C5A587D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\curl\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\zlib">
+      <UniqueIdentifier>{C0DCEB43-4CB9-1A24-382F-7A9A302B6901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\zlib\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\zlib\bin\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\CrashReport">
+      <UniqueIdentifier>{2E4F421A-359A-1317-E653-95447CAEE2CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\CrashReport\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\CrashReport">
+      <UniqueIdentifier>{2E4F421A-359A-1317-E653-95447CAEE2CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\CrashReport\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty">
+      <UniqueIdentifier>{2C73303A-D4DD-8964-684D-098D175E8FCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\curl">
+      <UniqueIdentifier>{A400525E-1755-1473-C382-AD778C5A587D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThridParty\curl\certificate">
+      <UniqueIdentifier>{68C3E4C1-B452-D075-6111-F138841768B9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="orangefilter">
+      <UniqueIdentifier>{6B9B6DDE-8860-A692-7FE5-A0AD94CCBA38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{1177910C-2DCE-8F2F-24FB-580080DDACDC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{1177910C-2DCE-8F2F-24FB-580080DDACDC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{1177910C-2DCE-8F2F-24FB-580080DDACDC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{1177910C-2DCE-8F2F-24FB-580080DDACDC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends">
+      <UniqueIdentifier>{8B5CBA42-A466-1972-FAE0-64A929ABA688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal">
+      <UniqueIdentifier>{5718B96F-8DC2-3AF6-7B75-9F3DCD3B9372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013">
+      <UniqueIdentifier>{A5F5BD28-70D1-489C-2443-B62F8C0FF8AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin">
+      <UniqueIdentifier>{11CC0371-6539-7E04-3B24-030E187A74AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release">
+      <UniqueIdentifier>{655AC91A-195F-50BD-EB75-72A7F6046A4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="depends\dwinternal\orangefilterpub2013\bin\release\x86">
+      <UniqueIdentifier>{18BBE778-C30E-9E84-331B-B85C911521F0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\OFCamera.gyp"/>
+    <None Include="..\depends\dwinternal\framework2015\bin\release\dwbase.dll">
+      <Filter>depends\dwinternal\framework2015\bin\release</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\framework2015\bin\release\dwutility.dll">
+      <Filter>depends\dwinternal\framework2015\bin\release</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\msvcp120.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\msvcr120.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\of_effect.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\glew32.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_cnn.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_core.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_kits.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_new_gesture.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_facedetection.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_seg.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\venus.dll">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\ThridParty\FreeImage\bin\x86\FreeImage.dll">
+      <Filter>ThridParty\FreeImage\bin\x86</Filter>
+    </None>
+    <None Include="..\ThridParty\opencv400\opencv\build\x86\vc14\bin\opencv_world400d.dll">
+      <Filter>ThridParty\opencv400\opencv\build\x86\vc14\bin</Filter>
+    </None>
+    <None Include="..\ThridParty\opencv400\opencv\build\x86\vc14\bin\opencv_world400.dll">
+      <Filter>ThridParty\opencv400\opencv\build\x86\vc14\bin</Filter>
+    </None>
+    <None Include="..\ThridParty\curl\bin\libcurl.dll">
+      <Filter>ThridParty\curl\bin</Filter>
+    </None>
+    <None Include="..\ThridParty\curl\bin\nghttp2.dll">
+      <Filter>ThridParty\curl\bin</Filter>
+    </None>
+    <None Include="..\ThridParty\zlib\bin\x86\zlib.dll">
+      <Filter>ThridParty\zlib\bin\x86</Filter>
+    </None>
+    <None Include="..\ThridParty\CrashReport\bin\crashreport.dll">
+      <Filter>ThridParty\CrashReport\bin</Filter>
+    </None>
+    <None Include="..\ThridParty\CrashReport\bin\BugReport.exe">
+      <Filter>ThridParty\CrashReport\bin</Filter>
+    </None>
+    <None Include="..\ThridParty\curl\certificate\cacert-2020-01-01.pem">
+      <Filter>ThridParty\curl\certificate</Filter>
+    </None>
+    <None Include="..\orangefilter\effects">
+      <Filter>orangefilter</Filter>
+    </None>
+    <None Include="..\res\msyh.ttc">
+      <Filter>res</Filter>
+    </None>
+    <None Include="..\res\icon_Movebutton_nor.png">
+      <Filter>res</Filter>
+    </None>
+    <None Include="..\res\selected.png">
+      <Filter>res</Filter>
+    </None>
+    <None Include="..\res\title.png">
+      <Filter>res</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_0.vnmodel">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_1.vnmodel">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_2.vnmodel">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_3.vnmodel">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_4.vnmodel">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_0.vnmodel">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_1.vnmodel">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_2.vnmodel">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_0.dat">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_1.dat">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+    <None Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_2.dat">
+      <Filter>depends\dwinternal\orangefilterpub2013\bin\release\x86</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+# 请查询 http://repo.yypm.com/dwintegrate 下各个子目录里面的version.info
+# 版本号等于releaseversion字段的值
+
+[dw3rd]
+glew-2.1.0=2019.210.0.14
+glfw2015-3.3=2019.33.1.133
+opencv2015-3.4.6=2020.346.1.202
+#curl2015-7.65.1= 
+
+[dwinternal]
+orangefilterpub2013=1.4.5.cedbbaf3.59
+framework2015=0.0.baab7b5a.19

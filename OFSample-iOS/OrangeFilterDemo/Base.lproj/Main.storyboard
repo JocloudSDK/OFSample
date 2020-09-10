@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g6s-Av-dmV">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GLKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdp-rg-y9e">
+                                <rect key="frame" x="0.0" y="852" width="414" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Owl-E9-WRd">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaM-mi-ybZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="朦胧美颜">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="hazyBeautyClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HeL-bc-0kq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vS1-W2-1hR">
+                                                <rect key="frame" x="82.666666666666671" y="0.0" width="83.000000000000014" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="清晰美颜">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clearBeautyClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BUS-e6-0j8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mM-4X-KtC">
+                                                <rect key="frame" x="165.66666666666666" y="0.0" width="82.666666666666657" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="整形">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="seniorBeautyTypeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i0C-eT-0bC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHb-ob-8be">
+                                                <rect key="frame" x="248.33333333333337" y="0.0" width="83" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="滤镜">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="filterClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jkf-pm-Kig"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtj-qO-na1">
+                                                <rect key="frame" x="331.33333333333331" y="0.0" width="82.666666666666686" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="贴纸">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="stickerClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vs4-bH-586"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ygx-Oz-8X4"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55160184580000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Owl-E9-WRd" firstAttribute="top" secondItem="jdp-rg-y9e" secondAttribute="top" id="0h0-ph-npz"/>
+                                    <constraint firstAttribute="height" constant="44" id="Wji-dC-enA"/>
+                                    <constraint firstItem="Owl-E9-WRd" firstAttribute="leading" secondItem="jdp-rg-y9e" secondAttribute="leading" id="ZGy-QT-Ln3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Owl-E9-WRd" secondAttribute="trailing" id="je8-Vx-eo4"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smf-Fy-AkC">
+                                <rect key="frame" x="28" y="64" width="31" height="30"/>
+                                <state key="normal" title="返回">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbQ-Tw-uaE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jdp-rg-y9e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6VI-dN-QRX"/>
+                            <constraint firstItem="Smf-Fy-AkC" firstAttribute="leading" secondItem="ckO-Xa-dkz" secondAttribute="leading" constant="28" id="WtP-sE-KK3"/>
+                            <constraint firstItem="Smf-Fy-AkC" firstAttribute="top" secondItem="ckO-Xa-dkz" secondAttribute="top" constant="20" id="fHJ-Mh-mkW"/>
+                            <constraint firstAttribute="bottom" secondItem="jdp-rg-y9e" secondAttribute="bottom" id="ghj-rN-JOj"/>
+                            <constraint firstAttribute="trailing" secondItem="jdp-rg-y9e" secondAttribute="trailing" id="kpf-Xq-4jR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ckO-Xa-dkz"/>
+                    </view>
+                    <connections>
+                        <outlet property="backBtn" destination="Smf-Fy-AkC" id="KV6-4f-5Kt"/>
+                        <outlet property="backView" destination="jdp-rg-y9e" id="5sR-Ug-ers"/>
+                        <outlet property="backViewHeightConstraint" destination="Wji-dC-enA" id="QoG-i7-dlp"/>
+                        <outlet property="clearBtn" destination="vS1-W2-1hR" id="hm4-Hi-YrO"/>
+                        <outlet property="faceBtn" destination="4mM-4X-KtC" id="ezK-Ki-4su"/>
+                        <outlet property="filterBtn" destination="vHb-ob-8be" id="ozJ-xV-NHX"/>
+                        <outlet property="hazyBtn" destination="FaM-mi-ybZ" id="4pW-mn-P51"/>
+                        <outlet property="stackViewLeftConstraint" destination="ZGy-QT-Ln3" id="Y1E-1e-Vhx"/>
+                        <outlet property="stackViewRightConstraint" destination="je8-Vx-eo4" id="wSV-Se-eAR"/>
+                        <outlet property="stickerBtn" destination="gtj-qO-na1" id="HpD-ux-Aj6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128.80000000000001" y="98.275862068965523"/>
+        </scene>
+        <!--Base View Controller-->
+        <scene sceneID="x73-Ib-cVh">
+            <objects>
+                <viewController id="g6s-Av-dmV" customClass="BaseViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vba-a9-0VI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bh6-yU-rQL">
+                                <rect key="frame" x="217" y="380" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.10980392160000001" green="0.86666666670000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="zAf-Wh-BQW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="横屏预览">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="landscapeRightBtnClicked:" destination="g6s-Av-dmV" eventType="touchUpInside" id="AIY-PT-jts"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tZN-I5-FUA">
+                                <rect key="frame" x="77" y="147" width="260" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="6tJ-9c-Wcc"/>
+                                    <constraint firstAttribute="width" constant="260" id="7jU-Ib-iy2"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGm-9y-HYT">
+                                <rect key="frame" x="117" y="380" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.10980392160000001" green="0.86666666670000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="H3R-fg-gEG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="竖屏预览">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="portraitBtnCliked:" destination="g6s-Av-dmV" eventType="touchUpInside" id="iQp-xU-f0o"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVg-mJ-nBF">
+                                <rect key="frame" x="369" y="54" width="30" height="30"/>
+                                <connections>
+                                    <action selector="languageSwith:" destination="g6s-Av-dmV" eventType="touchUpInside" id="wwM-a9-U8S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Bh6-yU-rQL" firstAttribute="centerY" secondItem="vGm-9y-HYT" secondAttribute="centerY" id="8qb-CN-1h5"/>
+                            <constraint firstItem="tZN-I5-FUA" firstAttribute="centerX" secondItem="vba-a9-0VI" secondAttribute="centerX" id="AoX-m2-3Ae"/>
+                            <constraint firstItem="vGm-9y-HYT" firstAttribute="top" secondItem="tZN-I5-FUA" secondAttribute="bottom" constant="105" id="Hxt-EX-NdS"/>
+                            <constraint firstItem="vGm-9y-HYT" firstAttribute="centerX" secondItem="vba-a9-0VI" secondAttribute="centerX" constant="-50" id="I9H-RS-bdy"/>
+                            <constraint firstItem="Bh6-yU-rQL" firstAttribute="centerX" secondItem="vba-a9-0VI" secondAttribute="centerX" constant="50" id="Sgx-J9-ddG"/>
+                            <constraint firstItem="tZN-I5-FUA" firstAttribute="top" secondItem="VEA-l7-geK" secondAttribute="top" constant="103" id="ZRn-Pa-ibM"/>
+                            <constraint firstItem="fVg-mJ-nBF" firstAttribute="top" secondItem="VEA-l7-geK" secondAttribute="top" constant="10" id="eWZ-B7-xq6"/>
+                            <constraint firstItem="VEA-l7-geK" firstAttribute="trailing" secondItem="fVg-mJ-nBF" secondAttribute="trailing" constant="15" id="ea6-AB-qwY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VEA-l7-geK"/>
+                    </view>
+                    <connections>
+                        <outlet property="lBtn" destination="Bh6-yU-rQL" id="9Km-Mn-B8D"/>
+                        <outlet property="languageSwitchBtn" destination="fVg-mJ-nBF" id="w2G-Lv-Jfq"/>
+                        <outlet property="logoImageView" destination="tZN-I5-FUA" id="Teb-XN-tvV"/>
+                        <outlet property="pBtn" destination="vGm-9y-HYT" id="g1A-oc-erZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Zt-Tb-l7e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-643" y="98"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Imgui">
+      <UniqueIdentifier>{F8C4E1DC-BAB6-2847-2CAA-FCC64314A3D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{742E9A0E-D1B0-643D-E893-71064FFA2C51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{742E9A0E-D1B0-643D-E893-71064FFA2C51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{742E9A0E-D1B0-643D-E893-71064FFA2C51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{742E9A0E-D1B0-643D-E893-71064FFA2C51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\effectmanager">
+      <UniqueIdentifier>{5C0BDD71-8B41-2D3E-2CDE-360B5D7DC175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\effectmanager">
+      <UniqueIdentifier>{5C0BDD71-8B41-2D3E-2CDE-360B5D7DC175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rapidjson">
+      <UniqueIdentifier>{776D2FB8-9A8E-E39C-E6F9-F78FA69A5149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rapidjson">
+      <UniqueIdentifier>{776D2FB8-9A8E-E39C-E6F9-F78FA69A5149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\Imgui\imconfig.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Imgui\imgui_internal.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Imgui\imstb_rectpack.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Imgui\imstb_textedit.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Imgui\imstb_truetype.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Imgui\imgui.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\Imgui\imgui.cpp">
+      <Filter>src\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Imgui\imgui_draw.cpp">
+      <Filter>src\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Imgui\imgui_widgets.cpp">
+      <Filter>src\Imgui</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\Imgui\imgui_extension.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\Imgui\imgui_extension.cpp">
+      <Filter>src\Imgui</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\Imgui\imgui_impl_glfw.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\Imgui\imgui_impl_glfw.cpp">
+      <Filter>src\Imgui</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\Imgui\imgui_impl_opengl3.h">
+      <Filter>src\Imgui</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\Imgui\imgui_impl_opengl3.cpp">
+      <Filter>src\Imgui</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\utils\pathutils.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\utils\pathutils.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\utils\fileutils.h">
+      <Filter>src\utils</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\utils\fileutils.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\effectmanager\effectmanager.h">
+      <Filter>src\effectmanager</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\effectmanager\effectmanager.cpp">
+      <Filter>src\effectmanager</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\rapidjson\rapidjson.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\rapidjson\document.h">
+      <Filter>src\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Camera.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\Camera.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\OrangeFilterRender.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\OrangeFilterRender.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\OrangeHelper.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\OrangeHelper.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\OrangeFilterUI.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\OrangeFilterUI.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\Texture.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\Texture.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <None Include="..\OFCamera.gyp" />
+    <ClInclude Include="..\src\ICameraBase.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OrangHelperManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\effectmanager\tinyxml2.h">
+      <Filter>src\effectmanager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\OrangHelperManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\effectmanager\tinyxml2.cpp">
+      <Filter>src\effectmanager</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

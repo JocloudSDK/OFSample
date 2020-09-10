@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7B56F220-4E18-0AB8-F5ED-DEA266DB7EF5}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OFCamera</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <TargetPath>$(MSBuildProjectDirectory)\..\bin\$(Configuration)\$(ProjectName).exe</TargetPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\src\imgui;..\src\utils;..\src\utils\log;..\src\effectmanager;..\src\rapidjson;..\src\crashreport;..\depends\dwinternal\orangefilterpub2013\include;..\depends\dwinternal\framework2015\include;..\ThridParty\FreeImage\include;..\ThridParty\glfw\include;..\depends\dw3rd\opencv2015-3.4.6\include;..\ThridParty\curl\include;..\ThridParty\zlib\include;..\ThridParty\CrashReport\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MinimalRebuild>true</MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWarningAsError>false</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;of_effect.lib;FreeImage.lib;libcurl.lib;dwbase.lib;zlib.lib;CrashReport.lib;opencv_world346d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\depends\dwinternal\orangefilterpub2013\lib\Release\x86;..\ThridParty\DirectShow\Lib\x86;..\ThridParty\FreeImage\lib\x86;..\ThridParty\glfw\lib-vc2010-32;..\depends\dw3rd\opencv2015-3.4.6\lib\debug;..\ThridParty\curl\lib;..\ThridParty\zlib\lib\x86;..\ThridParty\CrashReport\lib;..\depends\dwinternal\framework2015\lib\release;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <ImportLibrary>$(MSBuildProjectDirectory)/../lib/$(Configuration)/$(TargetName).lib</ImportLibrary>
+      <OutputFile>$(MSBuildProjectDirectory)/../bin/$(Configuration)/$(ProjectName).exe</OutputFile>
+      <ProgramDatabaseFile>$(MSBuildProjectDirectory)/../bin/$(Configuration)/$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\src\imgui;..\src\utils;..\src\utils\log;..\src\effectmanager;..\src\rapidjson;..\src\crashreport;..\depends\dwinternal\orangefilterpub2013\include;..\depends\dwinternal\framework2015\include;..\ThridParty\FreeImage\include;..\ThridParty\glfw\include;..\ThridParty\opencv400\opencv\build\include;..\ThridParty\curl\include;..\ThridParty\zlib\include;..\ThridParty\CrashReport\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>call ../buildwin/debug_exportbin.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\src\imgui;..\src\utils;..\src\utils\log;..\src\effectmanager;..\src\rapidjson;..\src\crashreport;..\depends\dwinternal\orangefilterpub2013\include;..\depends\dwinternal\framework2015\include;..\ThridParty\FreeImage\include;..\ThridParty\glfw\include;..\ThridParty\curl\include;..\ThridParty\zlib\include;..\ThridParty\CrashReport\include;..\depends\dw3rd\opencv2015-3.4.6\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;of_effect.lib;opencv_world346.lib;FreeImage.lib;libcurl.lib;dwbase.lib;zlib.lib;CrashReport.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\depends\dwinternal\orangefilterpub2013\lib\Release\x86;..\ThridParty\DirectShow\Lib\x86;..\ThridParty\FreeImage\lib\x86;..\ThridParty\glfw\lib-vc2010-32;..\depends\dw3rd\opencv2015-3.4.6\lib\release;..\ThridParty\curl\lib;..\ThridParty\zlib\lib\x86;..\ThridParty\CrashReport\lib;..\depends\dwinternal\framework2015\lib\release;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <ImportLibrary>$(MSBuildProjectDirectory)/../lib/$(Configuration)/$(TargetName).lib</ImportLibrary>
+      <OutputFile>$(MSBuildProjectDirectory)/../bin/$(Configuration)/$(ProjectName).exe</OutputFile>
+      <ProgramDatabaseFile>$(MSBuildProjectDirectory)/../bin/$(Configuration)/$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\src\imgui;..\src\utils;..\src\utils\log;..\src\effectmanager;..\src\rapidjson;..\src\crashreport;..\depends\dwinternal\orangefilterpub2013\include;..\depends\dwinternal\framework2015\include;..\ThridParty\FreeImage\include;..\ThridParty\glfw\include;..\ThridParty\opencv400\opencv\build\include;..\ThridParty\curl\include;..\ThridParty\zlib\include;..\ThridParty\CrashReport\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>call ../buildwin/exportbin.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\OFCamera.gyp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\effectmanager\tinyxml2.h" />
+    <ClInclude Include="..\src\ICameraBase.h" />
+    <ClInclude Include="..\src\Imgui\imconfig.h" />
+    <ClInclude Include="..\src\Imgui\imgui_internal.h" />
+    <ClInclude Include="..\src\Imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\src\Imgui\imstb_textedit.h" />
+    <ClInclude Include="..\src\Imgui\imstb_truetype.h" />
+    <ClInclude Include="..\src\Imgui\imgui.h" />
+    <ClInclude Include="..\src\Imgui\imgui_extension.h" />
+    <ClInclude Include="..\src\Imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="..\src\Imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\src\OrangHelperManager.h" />
+    <ClInclude Include="..\src\utils\pathutils.h" />
+    <ClInclude Include="..\src\utils\fileutils.h" />
+    <ClInclude Include="..\src\effectmanager\effectmanager.h" />
+    <ClInclude Include="..\src\rapidjson\rapidjson.h" />
+    <ClInclude Include="..\src\rapidjson\document.h" />
+    <ClInclude Include="..\src\Camera.h" />
+    <ClInclude Include="..\src\OrangeFilterRender.h" />
+    <ClInclude Include="..\src\OrangeHelper.h" />
+    <ClInclude Include="..\src\OrangeFilterUI.h" />
+    <ClInclude Include="..\src\Texture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\effectmanager\tinyxml2.cpp" />
+    <ClCompile Include="..\src\Imgui\imgui.cpp" />
+    <ClCompile Include="..\src\Imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\src\Imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\src\Imgui\imgui_extension.cpp" />
+    <ClCompile Include="..\src\Imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\src\Imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\src\OrangHelperManager.cpp" />
+    <ClCompile Include="..\src\utils\pathutils.cpp" />
+    <ClCompile Include="..\src\utils\fileutils.cpp" />
+    <ClCompile Include="..\src\effectmanager\effectmanager.cpp" />
+    <ClCompile Include="..\src\Camera.cpp" />
+    <ClCompile Include="..\src\OrangeFilterRender.cpp" />
+    <ClCompile Include="..\src\OrangeHelper.cpp" />
+    <ClCompile Include="..\src\OrangeFilterUI.cpp" />
+    <ClCompile Include="..\src\Texture.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

@@ -1,0 +1,8 @@
+# dw3rd
+[glew-2.1.0]
+todir = .
+dir = depends/dw3rd/glew-2.1.0/bin/release
+include = *.*
+exclude = 
+
+

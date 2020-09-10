@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  OrangeFilterDemo
+
+  Created by GasparChu on 2020/8/14.
+  Copyright © 2020 tangqiuhu@yy.com. All rights reserved.
+*/
+
+
+"language" = "中文";
+"竖屏预览"="Portrait";
+"横屏预览"="Landscape";
+"返回"="Back";
+"朦胧美颜"="Hazy Skin";
+"清晰美颜"="Clear Skin";
+"整型"="Face";
+"滤镜"="Filter";
+"贴纸"="Sticker";
+"原图"="Original";
+"美肤（朦胧）"="Smoothen(Hazy)";
+"美白"="Whiten";
+"美肤（清晰）"="Smoothen(Clear)";
+"窄脸"="slim";
+"小脸"="resize";
+"瘦颧骨"="cheek";
+"额高"="forehead";
+"额宽"="forehead";
+"大眼"="eye size";
+"眼距"="distance";
+"眼角"="slant";
+"瘦鼻"="slim";
+"长鼻"="length";
+"窄鼻梁"="bridge";
+"小嘴"="resize";
+"嘴位"="position";
+"下巴"="chin";
+"假日"="holiday";
+"清晰"="clear";
+"暖阳"="warm";
+"清新"="fresh";
+"粉嫩"="pink";

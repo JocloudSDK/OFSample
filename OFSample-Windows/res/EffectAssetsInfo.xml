@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="GB2312"?>
+<FilterInfo>
+    <RootNode NodeName="Assets">
+        <FilterNode FilterNodeName="298">
+			<FilterItem FilterItemName="9184">
+				<ItemFileName></ItemFileName>
+				<AnotherName>假日</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9185">
+				<ItemFileName></ItemFileName>
+				<AnotherName>清晰</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9186">
+				<ItemFileName></ItemFileName>
+				<AnotherName>暖阳</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9187">
+				<ItemFileName></ItemFileName>
+				<AnotherName>清新</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9188">
+				<ItemFileName></ItemFileName>
+				<AnotherName>粉嫩</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9190">
+				<ItemFileName></ItemFileName>
+				<AnotherName>冷色-阿黛尔</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9191">
+				<ItemFileName></ItemFileName>
+				<AnotherName>冷色-淡雅</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9192">
+				<ItemFileName></ItemFileName>
+				<AnotherName>冷色-加州</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9193">
+				<ItemFileName></ItemFileName>
+				<AnotherName>乐色-莫吉托</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9194">
+				<ItemFileName></ItemFileName>
+				<AnotherName>暖色-粉嫩</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9195">
+				<ItemFileName></ItemFileName>
+				<AnotherName>暖色-青春</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9196">
+				<ItemFileName></ItemFileName>
+				<AnotherName>暖色-甜美</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9197">
+				<ItemFileName></ItemFileName>
+				<AnotherName>暖色-温暖</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9198">
+				<ItemFileName></ItemFileName>
+				<AnotherName>暖色-阳光</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9199">
+				<ItemFileName></ItemFileName>
+				<AnotherName>少女-白皙</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9200">
+				<ItemFileName></ItemFileName>
+				<AnotherName>少女-洛丽塔</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9201">
+				<ItemFileName></ItemFileName>
+				<AnotherName>少女-文艺</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9202">
+				<ItemFileName></ItemFileName>
+				<AnotherName>增强-风情</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9203">
+				<ItemFileName></ItemFileName>
+				<AnotherName>增强-可口</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9204">
+				<ItemFileName></ItemFileName>
+				<AnotherName>增强-明朗</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9205">
+				<ItemFileName></ItemFileName>
+				<AnotherName>增强-诺兰</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9206">
+				<ItemFileName></ItemFileName>
+				<AnotherName>增强-水蜜桃</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9207">
+				<ItemFileName></ItemFileName>
+				<AnotherName>质感-冰淇淋</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9208">
+				<ItemFileName></ItemFileName>
+				<AnotherName>质感-胶片</AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9209">
+				<ItemFileName></ItemFileName>
+				<AnotherName>质感-杂志</AnotherName>
+			</FilterItem>
+		</FilterNode>
+		<FilterNode FilterNodeName="299">
+			<FilterItem FilterItemName="9182">
+				<ItemFileName>face3dplane.zip</ItemFileName>
+				<AnotherName></AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9272">
+				<ItemFileName>segment.zip</ItemFileName>
+				<AnotherName></AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9287">
+				<ItemFileName>facepoints.zip</ItemFileName>
+				<AnotherName></AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9292">
+				<ItemFileName>gestures.zip</ItemFileName>
+				<AnotherName></AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9339">
+				<ItemFileName>minnie_mouse.zip</ItemFileName>
+				<AnotherName></AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9340">
+				<ItemFileName>mickey_mouse.zip</ItemFileName>
+				<AnotherName></AnotherName>
+			</FilterItem>
+			<FilterItem FilterItemName="9341">
+				<ItemFileName>cat.zip</ItemFileName>
+				<AnotherName></AnotherName>
+			</FilterItem>
+		</FilterNode>
+    </RootNode>
+</FilterInfo>

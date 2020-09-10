@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.yy.orangefilter.test"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.4"
+
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+
+    applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "OFSample-${variant.versionName}-${variant.versionCode}-official" +
+                        ".apk"
+            }
+    }
+
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    implementation 'me.shaohui:bottomdialog:1.1.9'
+}
+
+File signFile = file(System.getenv('HOME') + "/.android/SCouldsign.properties")
+if (signFile.canRead()) {
+    Properties p = new Properties()
+    p.load(new FileInputStream(signFile))
+    if (p != null
+            && p.containsKey('key.store')
+            && p.containsKey('key.store.password')
+            && p.containsKey('key.alias')
+            && p.containsKey('key.alias.password')
+    ) {
+        println "RELEASE_BUILD: Signing..."
+        android.signingConfigs.release.storeFile = file(p['key.store'])
+        android.signingConfigs.release.storePassword = p['key.store.password']
+        android.signingConfigs.release.keyAlias = p['key.alias']
+        android.signingConfigs.release.keyPassword = p['key.alias.password']
+    } else {
+        println "RELEASE_BUILD: Required properties in signing.properties are missing"
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    println "RELEASE_BUILD: signing.properties not found"
+    android.buildTypes.release.signingConfig = null
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'assembleRelease') {
+        println "assembleRelease: run collectApks collectProguard"
+        task.finalizedBy collectApks
+    }
+}
+
+/**
+ * 重命名 & 拷贝文件到target目录
+ */
+task collectApks() {
+    doLast {
+        println "Copies APKs and Proguard mappingsto the target directory"
+        copy {
+            from 'build/outputs/apk/release'
+            exclude '**/*-unaligned.apk'
+            into "${project.rootDir}/target"
+        }
+        copy {
+            from 'build/outputs/mapping'
+            into "${project.rootDir}/target/proguard"
+        }
+    }
+}

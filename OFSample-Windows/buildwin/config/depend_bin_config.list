@@ -1,0 +1,14 @@
+#
+# dw3rd
+#
+#[glew-2.1.0-x86]
+#todir = x86
+#dir = depends/dw3rd/glew-2.1.0/bin/release/Win32
+#include = *.dll
+#exclude = 
+#
+#[glew-2.1.0-x64]
+#todir = x64
+#dir = depends/dw3rd/glew-2.1.0/bin/release/x64
+#include = *.dll
+#exclude = 

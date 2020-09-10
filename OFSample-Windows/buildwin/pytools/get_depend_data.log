@@ -1,0 +1,61 @@
+Wed, 09 Sep 2020 17:19:01[line:125] DEBUG artifact paths:
+     repo: http://repo.yypm.com/dwintegrate/dw3rd/glew-2.1.0/2019.210.0.14
+    cache: C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\glew-2.1.0\2019.210.0.14
+    local: D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\glew-2.1.0
+Wed, 09 Sep 2020 17:19:01[line:125] DEBUG artifact paths:
+     repo: http://repo.yypm.com/dwintegrate/dw3rd/glfw2015-3.3/2019.33.1.133
+    cache: C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\glfw2015-3.3\2019.33.1.133
+    local: D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\glfw2015-3.3
+Wed, 09 Sep 2020 17:19:01[line:125] DEBUG artifact paths:
+     repo: http://repo.yypm.com/dwintegrate/dw3rd/opencv2015-3.4.6/2020.346.1.202
+    cache: C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\opencv2015-3.4.6\2020.346.1.202
+    local: D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\opencv2015-3.4.6
+Wed, 09 Sep 2020 17:19:01[line:131] INFO config [opencv2015-3.4.6.2020.346.1.202] start
+Wed, 09 Sep 2020 17:19:01[line:176] INFO check cache integrity of [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\opencv2015-3.4.6\2020.346.1.202] ...
+Wed, 09 Sep 2020 17:19:01[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\opencv2015-3.4.6\2020.346.1.202\bin.tar.gz] md5: [7d7d6d79b9a071ccdc9d2ce791750061]
+Wed, 09 Sep 2020 17:19:01[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\opencv2015-3.4.6\2020.346.1.202\dev.tar.gz] md5: [62d68bd0f53e96223207518a7fae095b]
+Wed, 09 Sep 2020 17:19:01[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\opencv2015-3.4.6\2020.346.1.202\pdb.tar.gz] md5: [24397e0e0713ef1637bc239157d387dd]
+Wed, 09 Sep 2020 17:19:01[line:193] INFO cache integrity OK
+Wed, 09 Sep 2020 17:19:01[line:210] INFO check local integrity of [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\opencv2015-3.4.6] ...
+Wed, 09 Sep 2020 17:19:01[line:212] INFO dir [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\opencv2015-3.4.6] is not exist
+Wed, 09 Sep 2020 17:19:05[line:133] INFO config [opencv2015-3.4.6.2020.346.1.202] finish
+Wed, 09 Sep 2020 17:19:05[line:131] INFO config [glew-2.1.0.2019.210.0.14] start
+Wed, 09 Sep 2020 17:19:05[line:176] INFO check cache integrity of [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\glew-2.1.0\2019.210.0.14] ...
+Wed, 09 Sep 2020 17:19:05[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\glew-2.1.0\2019.210.0.14\bin.tar.gz] md5: [b0add4911d5da59e59a9e0adee324a98]
+Wed, 09 Sep 2020 17:19:05[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\glew-2.1.0\2019.210.0.14\dev.tar.gz] md5: [8492b3146e5155f4b6c651a949321f13]
+Wed, 09 Sep 2020 17:19:05[line:193] INFO cache integrity OK
+Wed, 09 Sep 2020 17:19:05[line:210] INFO check local integrity of [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\glew-2.1.0] ...
+Wed, 09 Sep 2020 17:19:05[line:212] INFO dir [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\glew-2.1.0] is not exist
+Wed, 09 Sep 2020 17:19:05[line:133] INFO config [glew-2.1.0.2019.210.0.14] finish
+Wed, 09 Sep 2020 17:19:05[line:131] INFO config [glfw2015-3.3.2019.33.1.133] start
+Wed, 09 Sep 2020 17:19:05[line:176] INFO check cache integrity of [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\glfw2015-3.3\2019.33.1.133] ...
+Wed, 09 Sep 2020 17:19:05[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dw3rd\glfw2015-3.3\2019.33.1.133\dev.tar.gz] md5: [732ee076d69e8063be58f972bca556eb]
+Wed, 09 Sep 2020 17:19:05[line:193] INFO cache integrity OK
+Wed, 09 Sep 2020 17:19:05[line:210] INFO check local integrity of [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\glfw2015-3.3] ...
+Wed, 09 Sep 2020 17:19:05[line:212] INFO dir [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dw3rd\glfw2015-3.3] is not exist
+Wed, 09 Sep 2020 17:19:05[line:133] INFO config [glfw2015-3.3.2019.33.1.133] finish
+Wed, 09 Sep 2020 17:19:05[line:125] DEBUG artifact paths:
+     repo: http://repo.yypm.com/dwintegrate/dwinternal/orangefilterpub2013/1.4.5.cedbbaf3.59
+    cache: C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\orangefilterpub2013\1.4.5.cedbbaf3.59
+    local: D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dwinternal\orangefilterpub2013
+Wed, 09 Sep 2020 17:19:05[line:125] DEBUG artifact paths:
+     repo: http://repo.yypm.com/dwintegrate/dwinternal/framework2015/0.0.baab7b5a.19
+    cache: C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\framework2015\0.0.baab7b5a.19
+    local: D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dwinternal\framework2015
+Wed, 09 Sep 2020 17:19:05[line:131] INFO config [orangefilterpub2013.1.4.5.cedbbaf3.59] start
+Wed, 09 Sep 2020 17:19:05[line:176] INFO check cache integrity of [C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\orangefilterpub2013\1.4.5.cedbbaf3.59] ...
+Wed, 09 Sep 2020 17:19:05[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\orangefilterpub2013\1.4.5.cedbbaf3.59\bin.tar.gz] md5: [3d59c3dd7955ca5addef13b7643bb2bb]
+Wed, 09 Sep 2020 17:19:05[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\orangefilterpub2013\1.4.5.cedbbaf3.59\dev.tar.gz] md5: [7997f186d427741cbb807a8c70d438d8]
+Wed, 09 Sep 2020 17:19:05[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\orangefilterpub2013\1.4.5.cedbbaf3.59\pdb.tar.gz] md5: [d1acbbff5b9b95b31886d92d1a8a220d]
+Wed, 09 Sep 2020 17:19:05[line:193] INFO cache integrity OK
+Wed, 09 Sep 2020 17:19:05[line:210] INFO check local integrity of [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dwinternal\orangefilterpub2013] ...
+Wed, 09 Sep 2020 17:19:05[line:212] INFO dir [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dwinternal\orangefilterpub2013] is not exist
+Wed, 09 Sep 2020 17:19:08[line:133] INFO config [orangefilterpub2013.1.4.5.cedbbaf3.59] finish
+Wed, 09 Sep 2020 17:19:08[line:131] INFO config [framework2015.0.0.baab7b5a.19] start
+Wed, 09 Sep 2020 17:19:08[line:176] INFO check cache integrity of [C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\framework2015\0.0.baab7b5a.19] ...
+Wed, 09 Sep 2020 17:19:08[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\framework2015\0.0.baab7b5a.19\dev.tar.gz] md5: [1037a70c06b6a43790784b92ec488e2d]
+Wed, 09 Sep 2020 17:19:08[line:292] DEBUG [C:\Users\YY\AppData\Roaming\dw_repo\dwinternal\framework2015\0.0.baab7b5a.19\src.tar.gz] md5: [896be723db17701ed13b8482ada64c20]
+Wed, 09 Sep 2020 17:19:08[line:193] INFO cache integrity OK
+Wed, 09 Sep 2020 17:19:08[line:210] INFO check local integrity of [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dwinternal\framework2015] ...
+Wed, 09 Sep 2020 17:19:08[line:212] INFO dir [D:\YYPro\OFCamera-master\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\ofsample-pc-OFSample-PC_v1.4.5_test_freature_fb\buildwin\..\depends\dwinternal\framework2015] is not exist
+Wed, 09 Sep 2020 17:19:10[line:133] INFO config [framework2015.0.0.baab7b5a.19] finish

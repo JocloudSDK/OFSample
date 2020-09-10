@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{02DEC31B-AE9E-AD48-6639-91355A4C8F63}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>run_deploy</RootNamespace>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Label="Configuration">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Utility</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Locals">
+    <PlatformToolset>v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup>
+    <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\..\bin\;$(MSBuildProjectDirectory)\..\bin\</ExecutablePath>
+    <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MinimalRebuild>true</MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies></AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo off &amp; echo %BUILD_DISPLAY_NAME% &gt; package.ini &amp; echo %BUILD_DISPLAY_NAME% &gt; ../bin/$(Configuration)/package.ini</Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <DisableSpecificWarnings>4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies></AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo off &amp; echo %BUILD_DISPLAY_NAME% &gt; package.ini &amp; echo %BUILD_DISPLAY_NAME% &gt; ../bin/$(Configuration)/package.ini</Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\OFCamera.gyp"/>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\ThridParty\opencv400\opencv\build\x86\vc14\bin\opencv_world400d.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\opencv400\opencv\build\x86\vc14\bin\opencv_world400d.dll&quot; &quot;..\bin\$(Configuration)\opencv_world400d.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/opencv400/opencv/build/x86/vc14/bin/opencv_world400d.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\opencv_world400d.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\ThridParty\curl\bin\nghttp2.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\curl\bin\nghttp2.dll&quot; &quot;..\bin\$(Configuration)\nghttp2.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/curl/bin/nghttp2.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\nghttp2.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_4.vnmodel">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\face&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_4.vnmodel&quot; &quot;..\bin\$(Configuration)\venus_models\face\Face_Key_Points_4.vnmodel&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Face_Key_Points_4.vnmodel to ..\bin\$(ConfigurationName)\venus_models\face</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\face\Face_Key_Points_4.vnmodel</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\ThridParty\CrashReport\bin\crashreport.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\CrashReport\bin\crashreport.dll&quot; &quot;..\bin\$(Configuration)\crashreport.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/CrashReport/bin/crashreport.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\crashreport.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_2.dat">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\segment&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_2.dat&quot; &quot;..\bin\$(Configuration)\venus_models\segment\Background_Segmentation_2.dat&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Background_Segmentation_2.dat to ..\bin\$(ConfigurationName)\venus_models\segment</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\segment\Background_Segmentation_2.dat</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\of_effect.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\of_effect.dll&quot; &quot;..\bin\$(Configuration)\of_effect.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/of_effect.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\of_effect.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_core.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_core.dll&quot; &quot;..\bin\$(Configuration)\vn_core.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/vn_core.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\vn_core.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\res\SimHei.ttf">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\res&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\res\SimHei.ttf&quot; &quot;..\bin\$(Configuration)\res\SimHei.ttf&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying res/SimHei.ttf to ..\bin\$(ConfigurationName)\res</Message>
+      <Outputs>..\bin\$(ConfigurationName)\res\SimHei.ttf</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\ThridParty\opencv400\opencv\build\x86\vc14\bin\opencv_world400.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\opencv400\opencv\build\x86\vc14\bin\opencv_world400.dll&quot; &quot;..\bin\$(Configuration)\opencv_world400.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/opencv400/opencv/build/x86/vc14/bin/opencv_world400.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\opencv_world400.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\ThridParty\curl\certificate\cacert-2020-01-01.pem">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\curl\certificate\cacert-2020-01-01.pem&quot; &quot;..\bin\$(Configuration)\cacert-2020-01-01.pem&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/curl/certificate/cacert-2020-01-01.pem to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\cacert-2020-01-01.pem</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\orangefilter\effects">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\effects\&quot; 2&gt;nul &amp; cd &quot;..\orangefilter&quot; &amp;&amp; xcopy /e /f /y &quot;effects&quot; &quot;..\bin\$(Configuration)\effects\&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying orangefilter/effects/ to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\dummy_copies;..\bin\$(ConfigurationName)</Outputs>
+    </CustomBuild>
+	  <CustomBuild Include="..\res\Assets">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\Assets\&quot; 2&gt;nul &amp; cd &quot;..\res&quot; &amp;&amp; xcopy /e /f /y &quot;Assets&quot; &quot;..\bin\$(Configuration)\Assets\&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying /res/Assets/ to ..\bin\$(ConfigurationName)\Assets\</Message>
+      <Outputs>..\dummy_copies;..\bin\$(ConfigurationName)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\venus.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\venus.dll&quot; &quot;..\bin\$(Configuration)\venus.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/venus.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus.dll</Outputs>
+    </CustomBuild>
+	<CustomBuild Include="..\res\EffectAssetsInfo.xml">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\res\EffectAssetsInfo.xml&quot; &quot;..\bin\$(Configuration)\EffectAssetsInfo.xml&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying /res/EffectAssetsInfo.xml to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\EffectAssetsInfo.xml</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\glew32.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\glew32.dll&quot; &quot;..\bin\$(Configuration)\glew32.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/glew32.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\glew32.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\res\icon_Movebutton_nor.png">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\res&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\res\icon_Movebutton_nor.png&quot; &quot;..\bin\$(Configuration)\res\icon_Movebutton_nor.png&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying res/icon_Movebutton_nor.png to ..\bin\$(ConfigurationName)\res</Message>
+      <Outputs>..\bin\$(ConfigurationName)\res\icon_Movebutton_nor.png</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_facedetection.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_facedetection.dll&quot; &quot;..\bin\$(Configuration)\vn_facedetection.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/vn_facedetection.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\vn_facedetection.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_kits.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_kits.dll&quot; &quot;..\bin\$(Configuration)\vn_kits.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/vn_kits.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\vn_kits.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_3.vnmodel">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\face&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_3.vnmodel&quot; &quot;..\bin\$(Configuration)\venus_models\face\Face_Key_Points_3.vnmodel&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Face_Key_Points_3.vnmodel to ..\bin\$(ConfigurationName)\venus_models\face</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\face\Face_Key_Points_3.vnmodel</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_seg.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_seg.dll&quot; &quot;..\bin\$(Configuration)\vn_seg.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/vn_seg.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\vn_seg.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_2.vnmodel">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\gesture&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_2.vnmodel&quot; &quot;..\bin\$(Configuration)\venus_models\gesture\Gesture_Recognition_2.vnmodel&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Gesture_Recognition_2.vnmodel to ..\bin\$(ConfigurationName)\venus_models\gesture</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\gesture\Gesture_Recognition_2.vnmodel</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_new_gesture.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_new_gesture.dll&quot; &quot;..\bin\$(Configuration)\vn_new_gesture.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/vn_new_gesture.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\vn_new_gesture.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\ThridParty\curl\bin\libcurl.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\curl\bin\libcurl.dll&quot; &quot;..\bin\$(Configuration)\libcurl.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/curl/bin/libcurl.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\libcurl.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_0.vnmodel">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\face&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_0.vnmodel&quot; &quot;..\bin\$(Configuration)\venus_models\face\Face_Key_Points_0.vnmodel&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Face_Key_Points_0.vnmodel to ..\bin\$(ConfigurationName)\venus_models\face</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\face\Face_Key_Points_0.vnmodel</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\msvcp120.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\msvcp120.dll&quot; &quot;..\bin\$(Configuration)\msvcp120.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/msvcp120.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\msvcp120.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\ThridParty\FreeImage\bin\x86\FreeImage.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\FreeImage\bin\x86\FreeImage.dll&quot; &quot;..\bin\$(Configuration)\FreeImage.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/FreeImage/bin/x86/FreeImage.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\FreeImage.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\ThridParty\CrashReport\bin\BugReport.exe">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\CrashReport\bin\BugReport.exe&quot; &quot;..\bin\$(Configuration)\BugReport.exe&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/CrashReport/bin/BugReport.exe to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\BugReport.exe</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_2.vnmodel">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\face&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_2.vnmodel&quot; &quot;..\bin\$(Configuration)\venus_models\face\Face_Key_Points_2.vnmodel&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Face_Key_Points_2.vnmodel to ..\bin\$(ConfigurationName)\venus_models\face</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\face\Face_Key_Points_2.vnmodel</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\res\selected.png">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\res&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\res\selected.png&quot; &quot;..\bin\$(Configuration)\res\selected.png&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying res/selected.png to ..\bin\$(ConfigurationName)\res</Message>
+      <Outputs>..\bin\$(ConfigurationName)\res\selected.png</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_1.dat">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\segment&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_1.dat&quot; &quot;..\bin\$(Configuration)\venus_models\segment\Background_Segmentation_1.dat&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Background_Segmentation_1.dat to ..\bin\$(ConfigurationName)\venus_models\segment</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\segment\Background_Segmentation_1.dat</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\msvcr120.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\msvcr120.dll&quot; &quot;..\bin\$(Configuration)\msvcr120.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/msvcr120.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\msvcr120.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\ThridParty\zlib\bin\x86\zlib.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\ThridParty\zlib\bin\x86\zlib.dll&quot; &quot;..\bin\$(Configuration)\zlib.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying ThridParty/zlib/bin/x86/zlib.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\zlib.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_0.vnmodel">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\gesture&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_0.vnmodel&quot; &quot;..\bin\$(Configuration)\venus_models\gesture\Gesture_Recognition_0.vnmodel&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Gesture_Recognition_0.vnmodel to ..\bin\$(ConfigurationName)\venus_models\gesture</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\gesture\Gesture_Recognition_0.vnmodel</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\framework2015\bin\release\dwutility.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\framework2015\bin\release\dwutility.dll&quot; &quot;..\bin\$(Configuration)\dwutility.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/framework2015/bin/release/dwutility.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\dwutility.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\res\title.png">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\res&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\res\title.png&quot; &quot;..\bin\$(Configuration)\res\title.png&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying res/title.png to ..\bin\$(ConfigurationName)\res</Message>
+      <Outputs>..\bin\$(ConfigurationName)\res\title.png</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_1.vnmodel">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\face&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Face_Key_Points_1.vnmodel&quot; &quot;..\bin\$(Configuration)\venus_models\face\Face_Key_Points_1.vnmodel&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Face_Key_Points_1.vnmodel to ..\bin\$(ConfigurationName)\venus_models\face</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\face\Face_Key_Points_1.vnmodel</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_cnn.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\vn_cnn.dll&quot; &quot;..\bin\$(Configuration)\vn_cnn.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/vn_cnn.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\vn_cnn.dll</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_1.vnmodel">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\gesture&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Gesture_Recognition_1.vnmodel&quot; &quot;..\bin\$(Configuration)\venus_models\gesture\Gesture_Recognition_1.vnmodel&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Gesture_Recognition_1.vnmodel to ..\bin\$(ConfigurationName)\venus_models\gesture</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\gesture\Gesture_Recognition_1.vnmodel</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_0.dat">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)\venus_models\segment&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\orangefilterpub2013\bin\release\x86\Background_Segmentation_0.dat&quot; &quot;..\bin\$(Configuration)\venus_models\segment\Background_Segmentation_0.dat&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/orangefilterpub2013/bin/release/x86/Background_Segmentation_0.dat to ..\bin\$(ConfigurationName)\venus_models\segment</Message>
+      <Outputs>..\bin\$(ConfigurationName)\venus_models\segment\Background_Segmentation_0.dat</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\depends\dwinternal\framework2015\bin\release\dwbase.dll">
+      <FileType>Document</FileType>
+      <Command>call mkdir &quot;..\bin\$(Configuration)&quot; 2&gt;nul &amp; set ERRORLEVEL=0 &amp; copy /Y &quot;..\depends\dwinternal\framework2015\bin\release\dwbase.dll&quot; &quot;..\bin\$(Configuration)\dwbase.dll&quot;&#xD;&#xA;if %errorlevel% neq 0 exit /b %errorlevel%</Command>
+      <Message>Copying depends/dwinternal/framework2015/bin/release/dwbase.dll to ..\bin\$(ConfigurationName)</Message>
+      <Outputs>..\bin\$(ConfigurationName)\dwbase.dll</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="OFCamera.vcxproj">
+      <Project>{7B56F220-4E18-0AB8-F5ED-DEA266DB7EF5}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
+</Project>

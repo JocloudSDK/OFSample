@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">OFSample</string>
+    <string name="orangefilter_serial_number">  0b7f3051-bf5d-11ea-90f8-b42e994ac7a8 </string>
+    <string name="build_version">1.0</string>
+
+    <string name="hazy_beauty">Hazy Skin</string>
+    <string name="clear_beauty">Clear Skin</string>
+    <string name="plastic">Face</string>
+    <string name="filter">Filter</string>
+    <string name="stickers">Sticker</string>
+
+    <string name="permission_denied">Required permission denied</string>
+    <string name="original">Original</string>
+    <string name="skin_hazy">Smoothen(Hazy)</string>
+    <string name="skin_clear">Smoothen(Clear)</string>
+    <string name="whitening">Whiten</string>
+    <string name="narrow_face">slim</string>
+    <string name="small_face">resize</string>
+    <string name="thin_jawbone">cheek</string>
+    <string name="high_forehead">forehead</string>
+    <string name="width_forehead">forehead</string>
+    <string name="big_eyes">eye size</string>
+    <string name="eye_distance">distance</string>
+    <string name="corner_of_eye">slant</string>
+    <string name="thin_nose">slim</string>
+    <string name="long_nose">length</string>
+    <string name="narrow_nose">bridge</string>
+    <string name="small_mouth">resize</string>
+    <string name="mouth_position">position</string>
+    <string name="chin">chin</string>
+    <string name="holiday">holiday</string>
+    <string name="clear">clear</string>
+    <string name="warm">warm</string>
+    <string name="refreshing">fresh</string>
+    <string name="matte">pink</string>
+
+    <string name="cool_adaier">冷色-阿黛尔</string>
+    <string name="cool_danya">冷色-淡雅</string>
+    <string name="cool_jiazhou">冷色-加州</string>
+    <string name="cool_mojito">冷色-莫吉托</string>
+    <string name="warm_fennen">暖色-粉嫩</string>
+    <string name="warm_pure">暖色-青春</string>
+    <string name="warm_sweet">暖色-甜美</string>
+    <string name="warm_wennuan">暖色-温暖</string>
+    <string name="warm_sun">暖色-阳光</string>
+    <string name="gril_white">少女-白皙</string>
+    <string name="gril_luolita">少女-洛丽塔</string>
+    <string name="gril_literature">少女-文艺</string>
+    <string name="enhance_amorous">增强-风情</string>
+    <string name="enhance_delicious">增强-可口</string>
+    <string name="enhance_clear">增强-明朗</string>
+    <string name="enhance_nuolan">增强-诺兰</string>
+    <string name="enhance_peach">增强-水蜜桃</string>
+    <string name="zhigan_cream">质感-冰淇凌</string>
+    <string name="zhigan_film">质感-胶片</string>
+    <string name="zhigan_magazine">质感-杂志</string>
+</resources>
