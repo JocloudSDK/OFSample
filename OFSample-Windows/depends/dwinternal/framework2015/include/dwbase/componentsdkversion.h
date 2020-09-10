@@ -1,0 +1,1 @@
+#include "../../dwbase/commgr/componentsdkversion.h"

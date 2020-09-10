@@ -36,13 +36,9 @@ float scaleRatioH = 1.f;
 //内部测试和对外的资源商店不同
 #define INTERNAL_TEST
 
-#ifdef INTERNAL_TEST
-const std::string c_sShopURL = "5ef668a99f";//内部测试
-#else
-const std::string c_sShopURL = "9c4fc48365";//对外发布
-#endif
 
-const char *CT_PLicense = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";   
+//const char *CT_PLicense = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";   
+const char *CT_PLicense = "0b7f3051-bf5d-11ea-90f8-b42e994ac7a8";
 
 const std::string g_assetDir = "../assets/";
 const std::string gBundlePath[] = {
@@ -276,9 +272,6 @@ bool OrangeFilterUI::OrangeFilterUICreate(int width, int height)
 
 	std::shared_ptr<EffcctManager>  m_effectManager = std::shared_ptr<EffcctManager>(new EffcctManager());
     m_effectManager->InitEffectManager(m_runPath.c_str());
-    std::string effectURL = "https://ovotest.yy.com/asset/common?channel=";
-	effectURL.append(c_sShopURL);
-	effectURL.append("&version=1.0.0&os=2");
 
     //bool isLoadedEffect = m_effectManager->LoadAssetStore(effectURL.c_str(), m_runPath.c_str());
 

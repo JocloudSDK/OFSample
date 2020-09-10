@@ -1,0 +1,1 @@
+#include "../../duifw/widgets/richedit/customtextobject/duitexteditgraphicspixmapitem.h"

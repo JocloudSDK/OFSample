@@ -22,14 +22,14 @@ directory structure：
 # 1 Quick Start
 
 ## 1.1 Prerequisite
-- Visual Studio 2015 and above.。
+- Visual Studio 2015 and above.
 ## 1.2 Integrate the SDK
 1. Lib in the SDK package is copied to depends\dwinternal\orangefilterpub2013\lib\Release.
 2. Include in the SDK package is copied to depends\dwinternal\orangefilterpub2013\include.
-3. Dll  in the SDK package is copied to bin\Release.
+3. Dll  in the SDK package is copied to depends\dwinternal\orangefilterpub2013\bin.
 4. Copy the OrangeHelper class to your own project, and the interface calls are dependent on it.
-5. Put the the effect package in the directory bin\Release\effects.
-
+5. Put the the effect package in the directory orangefilter\Effects.
+6. Run the run_deploy.vcxPROj project to automatically copy the dependent Dll to the bin directory.
 
 ## 1.3 Create an Engine Environment
 

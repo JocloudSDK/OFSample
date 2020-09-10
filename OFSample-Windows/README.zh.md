@@ -26,12 +26,12 @@
 ## 1.1 开发环境要求
 - visual studio 2015 及以上。
 ## 1.2 集成SDK
-- 将对应版本SDK包中的lib拷贝到depends\dwinternal\orangefilterpub2013\lib\Release；
+- 将对应版本SDK包中的lib拷贝到：depends\dwinternal\orangefilterpub2013\lib；
 - 将对应版本SDK包中的include文件拷贝到：depends\dwinternal\orangefilterpub2013\include；
-- 将对应版本SDK包中DLL拷贝到运行目录bin\Release。
-- 将OrangeHelper类拷贝到自己的项目中，后续接口调用都是依赖这个类。
-- 将特效包放到bin\Release\effects。
-
+- 将对应版本SDK包中DLL拷贝到运行目录：depends\dwinternal\orangefilterpub2013\bin；
+- 将OrangeHelper类拷贝到自己的项目中，后续接口调用都是依赖这个类；
+- 将特效包放到：orangefilter\Effects；
+- 运行run_deploy.vcxproj工程自动拷贝依赖的Dll到 bin目录。
 ## 1.3 创建OrangeFilter SDK引擎环境
 
 ```objc
