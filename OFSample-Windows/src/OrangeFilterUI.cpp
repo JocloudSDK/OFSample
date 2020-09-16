@@ -25,7 +25,7 @@
 #ifdef __APPLE__
 #define GL_SILENCE_DEPRECATION
 #endif
-const char TAGOFCAMERA[] = "OFCamera";
+const char TAGOFCAMERA[] = "OFSample";
 const char TAGOF[] = "OF";
 int oriWindowWidth = 800;
 int oriWindowHeight = 600;
@@ -51,7 +51,7 @@ const std::string gBundlePath[] = {
 static void crash_setup()
 {
     std::wstring ver = OFCAMERA_VERSION;
-    InitBugReport(L"OFCamera-pc", ver.c_str(), L"OFCamera-pc");
+    InitBugReport(L"OFSample-pc", ver.c_str(), L"OFSample-pc");
     SetShowReportUI(OF_TRUE);
     //SetCustomProperty(L"subprocess", L"subroutine");
 #if 0
@@ -199,7 +199,7 @@ bool OrangeFilterUI::OrangeFilterUICreate(int width, int height)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     glfwWindowHint(GLFW_RESIZABLE, 0);
-    m_window = glfwCreateWindow(width, height, "OFCamera", NULL, NULL);
+    m_window = glfwCreateWindow(width, height, "OFSample", NULL, NULL);
     if (m_window == NULL)
     {
         LogFinal(TAGOFCAMERA) << ("glfwCreateWindow Failed ");
@@ -256,7 +256,8 @@ bool OrangeFilterUI::OrangeFilterUICreate(int width, int height)
 	std::shared_ptr<CameraFactory> Factory  = std::shared_ptr<CameraFactory>(new OpencvCameraFactory);
 	m_pCameraBase = Factory->CreateCameraMode();
 	m_pCameraBase->initCamera(m_resolutionWidth, m_resolutionHeight, m_selectedCamera);
-	
+	m_pCameraBase->GetCameraResolution(m_resolutionWidth, m_resolutionHeight);
+	m_pCameraBase->connectCamera();
 	std::string licensePath;
 	PathJoinA(licensePath, m_runPath, "of_offline_license.license"); 
 	bool ret = OrangHelperManager::getOrangHelper()->createContext(CT_PLicense, licensePath, m_runPath);
@@ -375,7 +376,9 @@ void OrangeFilterUI::RenderFrame()
     
 	if (0 != textureID && ret)
     {
-        ImGui::Image((void *)(intptr_t)textureID, ImVec2(800, 600));
+		float fRatio = (float)m_resolutionWidth / (float)m_resolutionHeight;
+		int needHeight = 800 / fRatio;
+        ImGui::Image((void *)(intptr_t)textureID, ImVec2(800, needHeight));
     }
     ImGui::End();
     ImGui::PopStyleColor();

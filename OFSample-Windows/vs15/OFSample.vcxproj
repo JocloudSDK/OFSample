@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7B56F220-4E18-0AB8-F5ED-DEA266DB7EF5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OFCamera</RootNamespace>
+    <RootNamespace>OFSample</RootNamespace>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
@@ -80,7 +80,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;of_effect.lib;opencv_world346.lib;FreeImage.lib;libcurl.lib;dwbase.lib;zlib.lib;CrashReport.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -102,9 +102,10 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\OFCamera.gyp" />
+    <None Include="..\OFSample.gyp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\DumpFile.h" />
     <ClInclude Include="..\src\effectmanager\tinyxml2.h" />
     <ClInclude Include="..\src\ICameraBase.h" />
     <ClInclude Include="..\src\Imgui\imconfig.h" />
@@ -116,6 +117,8 @@
     <ClInclude Include="..\src\Imgui\imgui_extension.h" />
     <ClInclude Include="..\src\Imgui\imgui_impl_glfw.h" />
     <ClInclude Include="..\src\Imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\src\log\log.h" />
+    <ClInclude Include="..\src\log\loggerExt.h" />
     <ClInclude Include="..\src\OrangHelperManager.h" />
     <ClInclude Include="..\src\utils\pathutils.h" />
     <ClInclude Include="..\src\utils\fileutils.h" />
@@ -136,6 +139,8 @@
     <ClCompile Include="..\src\Imgui\imgui_extension.cpp" />
     <ClCompile Include="..\src\Imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="..\src\Imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\src\log\log.cpp" />
+    <ClCompile Include="..\src\log\logger.cpp" />
     <ClCompile Include="..\src\OrangHelperManager.cpp" />
     <ClCompile Include="..\src\utils\pathutils.cpp" />
     <ClCompile Include="..\src\utils\fileutils.cpp" />

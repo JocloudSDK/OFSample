@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include "stdio.h"
+#include "../src/log/loggerExt.h"
 extern int get_fps();
 
 char tmp[] = "IMG";
@@ -94,8 +95,8 @@ DWORD WINAPI TL_FRAME(LPVOID lpParamter)
 
 cv::Size CCameraDS::getCameraResolution()
 {
-	mCapture.set(cv::CAP_PROP_FRAME_WIDTH, 10000);
-	mCapture.set(cv::CAP_PROP_FRAME_HEIGHT, 10000);
+	//mCapture.set(cv::CAP_PROP_FRAME_WIDTH, 10000);
+	//mCapture.set(cv::CAP_PROP_FRAME_HEIGHT, 10000);
 	int w = (int)mCapture.get(cv::CAP_PROP_FRAME_WIDTH);
 	int h = (int)mCapture.get(cv::CAP_PROP_FRAME_HEIGHT);
 	return cv::Size(w, h);
@@ -144,6 +145,46 @@ cv::Mat CCameraDS::getCameraData()
 	return result;
 }
 
+bool CCameraDS::GetCameraResolution(uint32_t &nWidth, uint32_t &nHeight)
+{
+	if (!mCapture.isOpened())return false;
+	nWidth = (int)mCapture.get(cv::CAP_PROP_FRAME_WIDTH);
+	nHeight = (int)mCapture.get(cv::CAP_PROP_FRAME_HEIGHT);
+	base::Logd("SOUIEngine", base::Log("GetCameraResolution ").setMessage("maxRes width[%d], height[%d]", nWidth, nHeight));
+	return true;
+}
+
+bool CCameraDS::SetCameraResolution(uint32_t nWidth, uint32_t nHeight)
+{
+	if (!mCapture.isOpened())return false;
+
+	cv::Size maxRes = getCameraResolution();
+	cv::Size neededRes = cv::Size(nWidth, nHeight);
+
+	base::Logd("SOUIEngine", base::Log("getCameraResolution").setMessage("maxRes width[%d], height[%d]", maxRes.width, maxRes.height));
+	if (maxRes.width < neededRes.width) {
+		double aR = (double)maxRes.width / maxRes.height;
+		int height = neededRes.width / aR;
+		mCapture.set(cv::CAP_PROP_FRAME_WIDTH, neededRes.width);
+		mCapture.set(cv::CAP_PROP_FRAME_HEIGHT, height);
+		base::Logd("SOUIEngine", base::Log("maxRes.width < neededRes.width").setMessage("maxRes height[%d], width[%d]", neededRes.width, height));
+	}
+	else if (maxRes.height < neededRes.height) {
+		double aR = (double)maxRes.width / maxRes.height;
+		mCapture.set(cv::CAP_PROP_FRAME_HEIGHT, neededRes.height);
+		mCapture.set(cv::CAP_PROP_FRAME_WIDTH, neededRes.height*aR);
+		base::Logd("SOUIEngine", base::Log("maxRes.height < neededRes.height").setMessage("maxRes height[%d], width[%d]", neededRes.height, neededRes.height*aR));
+	}
+	else {
+		mCapture.set(cv::CAP_PROP_FRAME_HEIGHT, neededRes.height);
+		mCapture.set(cv::CAP_PROP_FRAME_WIDTH, neededRes.width);
+		base::Logd("SOUIEngine", base::Log("else ").setMessage("maxRes width[%d], height[%d]", neededRes.width,neededRes.height));
+	}
+	mCapture.set(cv::CAP_PROP_AUTOFOCUS, 0);
+	mCapture.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+	return true;
+}
+
 void CCameraDS::initCamera(int width, int height,int camID) {
 	logi("CCameraDS::initCamera\n");
 	status = STATUS_NO_CAMERA;
@@ -161,36 +202,10 @@ void CCameraDS::initCamera(int width, int height,int camID) {
 		}
 		else
 		{
+			bool ret = mCapture.open(cv::CAP_DSHOW + camID);
 			if (!mCapture.isOpened())
-			{
-				bool ret = mCapture.open(cv::CAP_DSHOW+camID);
-				//mCapture.open(camID);
-				rs_width = width;
-				rs_height = height;
-				cv::Size maxRes = getCameraResolution();
-				cv::Size neededRes = cv::Size(width,height);
-
-				if (maxRes.width < neededRes.width) {
-					double aR = (double)maxRes.width / maxRes.height;
-					mCapture.set(cv::CAP_PROP_FRAME_WIDTH, neededRes.width);
-					mCapture.set(cv::CAP_PROP_FRAME_HEIGHT, neededRes.width / aR);
-				}
-				else if (maxRes.height < neededRes.height) {
-					double aR = (double)maxRes.width / maxRes.height;
-					mCapture.set(cv::CAP_PROP_FRAME_HEIGHT, neededRes.height);
-					mCapture.set(cv::CAP_PROP_FRAME_WIDTH, neededRes.height*aR);
-				}
-				else {
-					mCapture.set(cv::CAP_PROP_FRAME_HEIGHT, neededRes.height);
-					mCapture.set(cv::CAP_PROP_FRAME_WIDTH, neededRes.width);
-				}
-				mCapture.set(cv::CAP_PROP_AUTOFOCUS, 0);
-				if (!mCapture.isOpened())
-					throw std::runtime_error("Unable to open video source");
-			}
+				throw std::runtime_error("Unable to open video source");
 		}
-
-		connectCamera();
 	}
 	catch (...) {
 		loge("camera init error\n");

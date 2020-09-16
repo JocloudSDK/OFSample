@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OFCamera", "OFCamera.vcxproj", "{7B56F220-4E18-0AB8-F5ED-DEA266DB7EF5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OFSample", "OFSample.vcxproj", "{7B56F220-4E18-0AB8-F5ED-DEA266DB7EF5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "run_deploy", "run_deploy.vcxproj", "{02DEC31B-AE9E-AD48-6639-91355A4C8F63}"
 	ProjectSection(ProjectDependencies) = postProject

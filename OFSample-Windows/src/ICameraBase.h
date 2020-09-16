@@ -35,7 +35,9 @@ public:
 	virtual bool isPlaying() =0;
 	virtual int getDeviceNameList(std::vector<std::string> &vNameList) = 0;
 	virtual cv::Mat getCameraData() = 0;
-	
+	virtual bool GetCameraResolution(uint32_t &nWidth, uint32_t &nHeight) = 0;
+	virtual bool SetCameraResolution(uint32_t nWidth, uint32_t nHeight) = 0;
+
 protected:
 	virtual BOOL Run() { return FALSE; };
 	static DWORD WINAPI TL_FRAME(LPVOID lpParamter)

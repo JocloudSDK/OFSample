@@ -49,6 +49,8 @@ public:
 	virtual int getDeviceNameList(vector<string> &vNameList);
 	virtual cv::Mat getCameraData();
 	virtual BOOL Run();
+	virtual bool GetCameraResolution(uint32_t &nWidth, uint32_t &nHeight);
+	virtual bool SetCameraResolution(uint32_t nWidth, uint32_t nHeight);
 
 	bool openFileDlg();
 	void restartCamera();
