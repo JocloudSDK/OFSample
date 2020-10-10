@@ -1,11 +1,5 @@
-# Overview
-This demo shows how to use the OrangeFilter SDK on the Windows side;The data source is to obtain external camera data；
-directory structure：
-- bin\release\effects: Store all beauty-related effects packages
-- bin\release\Assets: The image of the resource used by the Demo, using effecttaskInfo.xml, corresponds to the effects package；
-- src: Storing logical code。
-
- The effects supported are as follows:
+# 1 Overview
+This demo shows how to use the OrangeFilter SDK to implement cosmetic, plastic, filter, sticker, gesture, and other effects.The special effects package includes beauty, makeup, filter, plastic, sticker, gesture and background segmentation. The corresponding relationship between the special effects package and functions is as follows:
 
 | Effect Package | Function | Adjustable or not |
 | ---:| :--- | ---:|
@@ -19,19 +13,21 @@ directory structure：
 | Makeup | No makeup starts on air, with makeup on the mirror | No |
 
 
-# 1 Quick Start
+# 2 Quick Start
 
-## 1.1 Prerequisite
+## 2.1 Prerequisite
 - Visual Studio 2015 and above.
-## 1.2 Integrate the SDK
-1. Lib in the SDK package is copied to depends\dwinternal\orangefilterpub2013\lib\Release.
-2. Include in the SDK package is copied to depends\dwinternal\orangefilterpub2013\include.
-3. Dll  in the SDK package is copied to depends\dwinternal\orangefilterpub2013\bin.
-4. Copy the OrangeHelper class to your own project, and the interface calls are dependent on it.
-5. Put the the effect package in the directory orangefilter\Effects.
-6. Run the run_deploy.vcxPROj project to automatically copy the dependent Dll to the bin directory.
-
-## 1.3 Create an Engine Environment
+## 2.2 directory structure
+- bin：The compiled output path。
+- src: Storing logical code。
+## 2.3 Integrate the SDK
+  1. Lib in the SDK package is copied to depends\dwinternal\orangefilterpub2013\lib\Release.
+  2. Include in the SDK package is copied to depends\dwinternal\orangefilterpub2013\include.
+  3. Dll  in the SDK package is copied to depends\dwinternal\orangefilterpub2013\bin.
+  4. Copy the OrangeHelper class to your own project, and the interface calls are dependent on it.
+  5. Put the the effect package in the directory orangefilter\Effects.
+  6. Run the run_deploy.vcxPROj project to automatically copy the dependent Dll to the bin directory.
+## 2.4 Create an Engine Environment
 
 ```objc
     bool OrangeHelper::createContext(const std::string& ofSerialNumber, const std::string& licensePath, const std::string& resDir, VenusType aiType = VN_All)
@@ -47,16 +43,15 @@ directory structure：
 | aiType | AI effect type:<br>“VENUS_NONE”- basic beautification, disable AI calculation<br>"VENUS_FACE"- advanced beauty and stickers<br> VENUS_GESTURE- basic beautification and gesture recognition<br> VENUS_SEGMENT-basic beautification and background segmentation<br>VENUS_ALL -enbale AI functions |
 
 
-## 1.4 Release Engine Resources
+## 2.5 Release Engine Resources
 
 ```objc
     void OrangeHelper::destroyContext();
 ```
 > **Note**
+>-  After releasing the resource, the beautification effects are unavailable. You can reusing it by recreating an engine environment.
 
->  After releasing the resource, the beautification effects are unavailable. You can reusing it by recreating an engine environment.
-
-## 1.5 Rendering Effects Frame by Frame
+## 2.6 Rendering Effects Frame by Frame
 ```objc
       bool OrangeHelper::updateFrameParams(const GLTexture& textureIn, const GLTexture& textureOut, const ImageInfo& imageInfo);
 ```
@@ -69,10 +64,10 @@ directory structure：
 | imageInfo | Image recognition encapsulated instance, refer to [ImageInfo](#ImageInfo) |
 
 > **Note**
-> - Each frame needs to be refreshed for getting the the current texture rendering information.
-> -  Returne false for failure. Make sure the effect is enabled.
+>- Each frame needs to be refreshed for getting the the current texture rendering information.
+>- Returne false for failure. Make sure the effect is enabled.
 
-## 1.6 Enable/Disable Effects
+## 2.7 Enable/Disable Effects
 Enable/disable beauty, filters, basic and advanced shaping.
 
 ```objc
@@ -86,10 +81,9 @@ Enable/disable beauty, filters, basic and advanced shaping.
 | bEnable | Whether to enable. When called for the first time and passing false, the effect is not loaded. |
 
 > **Note:**
->
-> When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded, and you cannot get the actual parameters by calling `getEffectParam` and `getEffectParamDetail`.
+>- When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded, and you cannot get the actual parameters by calling `getEffectParam` and `getEffectParamDetail`.
 
-## 1.7 Adjust Effect Intensity
+## 2.8 Adjust Effect Intensity
 Adjust the effect intensity of beautification, filter, shaping, etc.
 ```objc
     bool OrangeHelper::setEffectParam(EffectParamType effectParamType, int curVal);
@@ -101,7 +95,7 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | effectParamType | Effect parameters ,see details in [EffectParamType](#EffectParamType) |
 | curVal | Effect parameter value to be set; the value range of each parameter is different, see details in  [EffectParamType](#EffectParamType). |
 
-## 1.8 Get the Current Effect Intensity 
+## 2.9 Get the Current Effect Intensity 
 ```objc
     int OrangeHelper::getEffectParam(EffectParamType effectParamType);
 ```
@@ -112,10 +106,9 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | effectParamType | Effect parameters, see details in [EffectParamType](#EffectParamType) |
 
 > **Note:**
->
-> If the effect is released, disabled, or not initialized, you should load it before getting the effect parameters.
+>- If the effect is released, disabled, or not initialized, you should load it before getting the effect parameters.
 
-## 1.9 Get the Value Range and Default Value of an Effect Parameter
+## 2.10 Get the Value Range and Default Value of an Effect Parameter
 ```objc
     bool OrangeHelper::getEffectParamDetail(EffectParamType effectParamType, EffectParam& effectParam);
 ```
@@ -127,11 +120,10 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | effectParam | Effect parameter vaules, including the maximum value, minimum value, current value and default value. See details in [EffectParam](#EffectParam) |
 
 > **Note**
->
-> If the effect is released, disabled, or not initialized, you should load it before getting the effect parameters.
+>- If the effect is released, disabled, or not initialized, you should load it before getting the effect parameters.
 
 
-## 1.10 Release Resources
+## 2.11 Release Resources
 
 ```objc
     bool OrangeHelper::releaseEffect(EffectType effectType);
@@ -143,10 +135,9 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | effectType | Effect type, see details in [EffectType](#EffectType) |
 
 > **Note**
->
-> This API is not recommended to use.
+>- This API is not recommended to use.
 
-## 1.11 Enbale/Disable Sticker
+## 2.12 Enbale/Disable Sticker
 
 ```objc
     bool OrangeHelper::enableSticker(const std::string& path, bool bEnable);
@@ -159,11 +150,10 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | bEnable | Whether to enable the sticker |
 
 > **Note**
->
-> - If path is incorrect, loading the effect will fail.
-> - When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded.
+>- If path is incorrect, loading the effect will fail.
+>- When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded.
 
-## 1.12 Resource Sticker Release
+## 2.13 Resource Sticker Release
 
 ```objc
     bool OrangeHelper::releaseSticker(const std::string& path);
@@ -175,10 +165,9 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | path | The absolute path of the sticker  |
 
 > **Note**
->
-> If path is incorrect, releasing resources will fail.
+>- If path is incorrect, releasing resources will fail.
 
-## 1.13 Search for the Sticker Execution Results
+## 2.14 Search for the Sticker Execution Results
 ```objc
     bool OrangeHelper::checkStickerResult(const std::vector<std::string>& stickerPaths, std::vector<int>& stickerResults);
 ```
@@ -190,10 +179,9 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | stickerResults | Return value |
 
 > **Note**
->
-> This API should be called after calling updateFrameParams.
+>- This API should be called after calling updateFrameParams.
 
-## 1.14 Enable/Disable Gesture
+## 2.15 Enable/Disable Gesture
 
 ```objc
     bool OrangeHelper::enableGesture(const std::string& path, bool bEnable);
@@ -206,11 +194,10 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | bEnable | Whether to enable the gesture. |
 
 > **Note:**
->
-> - If path is incorrect, loading gestures will fail.
-> - When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded.
+>- If path is incorrect, loading gestures will fail.
+>- When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded.
 
-## 1.15 Release Gesture Resources
+## 2.16 Release Gesture Resources
 
 ```objc
     bool OrangeHelper::releaseGesture(const std::string& path);
@@ -222,9 +209,9 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 | path | The absolute path of the gesture effect |
 
 > **Note:**
-> If path is incorrect, releasing resources will fail.
+>- If path is incorrect, releasing resources will fail.
 
-## 1.16 Check Whether the engine environment is Available
+## 2.17 Check Whether the engine environment is Available
 
 ```objc
     bool OrangeHelper::isContextValid();
@@ -232,14 +219,14 @@ Adjust the effect intensity of beautification, filter, shaping, etc.
 **Return Value**
 "true"-available；"false"- not available
 
-## 1.17 Set Log Level
+## 2.18 Set Log Level
 
 ```objc
    OrangeHelper.setLogLevel(logLevel);
 ```
 You can set it to  0 to close all logs. 
 
-## 1.18 Redirect the Log Output
+## 2.19 Redirect the Log Output
 
 ```objc
     bool OrangeHelper::setLogLevel(int level)
@@ -248,9 +235,9 @@ You can set it to  0 to close all logs.
 | :--- | :--- |
 | level | loglevel: see details in [LogLevel](#LogLevel) |
 
-# 2 Structure and Enumeration
+## 2.20 Structure and Enumeration
 
-## EffectParamType
+### EffectParamType
 
 ```objc
     enum EffectParamType {
@@ -306,7 +293,7 @@ You can set it to  0 to close all logs.
     };
 ```
 
-## EffectParam
+### EffectParam
 
 ```objc
     struct EffectParam {
@@ -317,7 +304,7 @@ You can set it to  0 to close all logs.
     };
 ```
 
-## EffectType
+### EffectType
 
 ```objc
     enum EffectType {
@@ -354,7 +341,7 @@ You can set it to  0 to close all logs.
     };
 ```
 
-## ImageInfo
+### ImageInfo
 
 ```objc
     struct ImageInfo {
@@ -374,7 +361,7 @@ You can set it to  0 to close all logs.
     };
 ```
 
-## GLTexture
+### GLTexture
 
 ```objc
     struct GLTexture
@@ -387,7 +374,7 @@ You can set it to  0 to close all logs.
     };
 ```
 
-## Effect Package Name
+### Effect Package Name
 
 ```objc
     String[] mEffectDefaults = {
@@ -423,7 +410,7 @@ You can set it to  0 to close all logs.
 		"zhigan-zazhi.zip"				//Texture-magazine filter
     };
 ```
-## Loglevel
+### Loglevel
 
 ```objc
     String[] LogLevel = {  
@@ -434,3 +421,8 @@ You can set it to  0 to close all logs.
 		"LG_Verbose", //All of the messages
     };
 ```
+
+# 3 Contact us
+- If you would like to see more official examples, see the scenario Demo [Click to download](https://docs.jocloud.com/download)
+- If you would like to know more about beauty products, please refer to [Product Introduction](https://docs.jocloud.com/cloud/cn/product_category/beauty_sdk/product_overview/product/product.html)
+- See the full API documentation [API Reference](https://docs.jocloud.com/cloud/cn/product_category/beauty_sdk/api/Windows/v1.4.2/category.html)
