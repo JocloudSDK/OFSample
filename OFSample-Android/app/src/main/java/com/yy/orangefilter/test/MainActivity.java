@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvSticker;
     private LinearLayout llBottom;
 
-    private int mOFContext;
     private AlertDialog mDialog;
 
     private boolean isEnableBeautyHazy = true;
@@ -693,10 +692,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void onRelease() {
             Log.i(TAG, "onRelease");
             //release source
-            if (mOFContext != 0) {
-                OrangeHelper.destroyContext();
-                mOFContext = 0;
-            }
+            OrangeHelper.destroyContext();
 
             if (mDialog != null) {
                 mDialog.dismiss();
