@@ -62,6 +62,16 @@
                 android:layout_marginRight="4dp"
                 android:text="@string/filter"/>
             <TextView
+                android:id="@+id/tvGestures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:text="@string/gestures"/>
+            <TextView
                 android:id="@+id/tvSticker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">OFSample</string>
-    <string name="orangefilter_serial_number">  0b7f3051-bf5d-11ea-90f8-b42e994ac7a8 </string>
+    <string name="orangefilter_serial_number">0b7f3051-bf5d-11ea-90f8-b42e994ac7a8</string>
     <string name="build_version">1.0</string>
 
     <string name="hazy_beauty">朦胧美颜</string>
@@ -8,6 +8,7 @@
     <string name="plastic">整形</string>
     <string name="filter">滤镜</string>
     <string name="stickers">贴纸</string>
+    <string name="gestures">手势</string>
 
     <string name="permission_denied">所需权限被拒绝</string>
     <string name="original">原图</string>
@@ -33,7 +34,7 @@
     <string name="warm">暖阳</string>
     <string name="refreshing">清新</string>
     <string name="matte">粉嫩</string>
-
+    <string name="filter_whitening">美白</string>
     <string name="cool_adaier">冷色-阿黛尔</string>
     <string name="cool_danya">冷色-淡雅</string>
     <string name="cool_jiazhou">冷色-加州</string>

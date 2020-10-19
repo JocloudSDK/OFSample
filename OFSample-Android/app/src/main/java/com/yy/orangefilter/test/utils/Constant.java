@@ -3,10 +3,10 @@ package com.yy.orangefilter.test.utils;
 import com.yy.orangefilter.test.R;
 import com.yy.orangefilter.test.helper.OrangeHelper;
 
+import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_BasicBeautyClearIntensity;
+import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_BasicBeautyClearOpacity;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_BasicBeautyIntensity;
-import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_BasicBeautyIntensity5;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_BasicBeautyOpacity;
-import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_BasicBeautyOpacity5;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_FilterAdaierIntensity;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_FilterAmorousIntensity;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_FilterClearIntensity;
@@ -86,16 +86,15 @@ public class Constant {
             R.string.skin_clear,
             R.string.whitening
     };
-    public static final com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType[]
-            beautyTypeHazy =
+    public static final com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType[] beautyTypeHazy =
             new OrangeHelper.EffectParamType[]{
                     EP_BasicBeautyOpacity, //Smoothen
                     EP_BasicBeautyIntensity, //Whiten
             };
     public static final OrangeHelper.EffectParamType[] beautyTypeClear =
             new OrangeHelper.EffectParamType[]{
-                    EP_BasicBeautyOpacity5, //Smoothen strength
-                    EP_BasicBeautyIntensity5, //Whiten strength
+                    EP_BasicBeautyClearOpacity,//Smoothen strength
+                    EP_BasicBeautyClearIntensity,//Whiten strength
             };
     public static final int[] resBeautyOption = new int[]{
             R.drawable.beauty_1,
@@ -118,23 +117,22 @@ public class Constant {
             R.string.mouth_position,
             R.string.chin,
     };
-    public static final OrangeHelper.EffectParamType[] plasticType =
-            new OrangeHelper.EffectParamType[]{
-                    EP_SeniorTypeThinFaceIntensity, //slim
-                    EP_SeniorTypeSmallFaceIntensity, //resize
-                    EP_SeniorTypeSquashedFaceIntensity, //cheek
-                    EP_SeniorTypeForeheadLiftingIntensity, //forehead
-                    EP_SeniorTypeWideForeheadIntensity, //forehead
-                    EP_SeniorTypeBigSmallEyeIntensity, //eye size
-                    EP_SeniorTypeEyesOffsetIntensity, //distance
-                    EP_SeniorTypeEyesRotationIntensity, //slant
-                    EP_SeniorTypeThinNoseIntensity, //slim
-                    EP_SeniorTypeLongNoseIntensity, //length
-                    EP_SeniorTypeThinNoseBridgeIntensity, //bridge
-                    EP_SeniorTypeThinmouthIntensity, //resize
-                    EP_SeniorTypeMovemouthIntensity, //position
-                    EP_SeniorTypeChinLiftingIntensity, //chin
-            };
+    public static final OrangeHelper.EffectParamType[] plasticType = new OrangeHelper.EffectParamType[]{
+            EP_SeniorTypeThinFaceIntensity, //slim
+            EP_SeniorTypeSmallFaceIntensity, //resize
+            EP_SeniorTypeSquashedFaceIntensity, //cheek
+            EP_SeniorTypeForeheadLiftingIntensity, //forehead
+            EP_SeniorTypeWideForeheadIntensity, //forehead
+            EP_SeniorTypeBigSmallEyeIntensity, //eye size
+            EP_SeniorTypeEyesOffsetIntensity, //distance
+            EP_SeniorTypeEyesRotationIntensity, //slant
+            EP_SeniorTypeThinNoseIntensity, //slim
+            EP_SeniorTypeLongNoseIntensity, //length
+            EP_SeniorTypeThinNoseBridgeIntensity, //bridge
+            EP_SeniorTypeThinmouthIntensity, //resize
+            EP_SeniorTypeMovemouthIntensity, //position
+            EP_SeniorTypeChinLiftingIntensity, //chin
+    };
     public static final int[] resPlasticOption = new int[]{
             R.drawable.beauty_2,
             R.drawable.beauty_3,
@@ -177,6 +175,7 @@ public class Constant {
             R.string.zhigan_cream,
             R.string.zhigan_film,
             R.string.zhigan_magazine
+
     };
     public static final OrangeHelper.EffectType[] filterType = new OrangeHelper.EffectType[]{
             ET_FilterHoliday, //Filter Holiday
@@ -184,7 +183,6 @@ public class Constant {
             ET_FilterWarm, //Filter Warm
             ET_FilterFresh, //Filter Fresh
             ET_FilterTender, //Filter Tender
-
 
             //20款风格滤镜
             ET_FilterAdaier, //Adaier filter
@@ -212,7 +210,7 @@ public class Constant {
             new OrangeHelper.EffectParamType[]{
                     EP_FilterHolidayIntensity, //Holiday filter strength
                     EP_FilterClearIntensity, //Clear filter strength
-                    EP_FilterWarmIntensity, //Warm filter Strength
+                    EP_FilterWarmIntensity, //Warm filter strength
                     EP_FilterFreshIntensity, //Fresh filter strength
                     EP_FilterTenderIntensity, //Tender filter strength
 
@@ -264,26 +262,179 @@ public class Constant {
             R.drawable.filter_jiari,
             R.drawable.filter_jiari,
             R.drawable.filter_jiari,
+
     };
     //Sticker
     //Sticker path
     public static final String[] stickerPath = new String[]{
-            "/orangefilter/effects/gestures.zip",
             "/orangefilter/effects/segment.zip",
-            "/orangefilter/effects/facepoints.zip",
-            "/orangefilter/effects/cat.zip",
-            "/orangefilter/effects/mickey_mouse.zip",
-            "/orangefilter/effects/minnie_mouse.zip",
-            "/orangefilter/effects/face3dplane.zip"
+            "/orangefilter/effects/sticker_aral.zip",
+            "/orangefilter/effects/sticker_black_cat_ears.zip",
+            "/orangefilter/effects/sticker_bud_glasses.zip",
+            "/orangefilter/effects/sticker_devil_gauze_mask.zip",
+            "/orangefilter/effects/sticker_seeking_attention.zip",
+            "/orangefilter/effects/sticker_sunglasses.zip",
+            "/orangefilter/effects/sticker_YYbear.zip"
     };
     //Sticker icon
     public static final int[] resStickerOption = new int[]{
-            R.drawable.sticker_gesture,
             R.drawable.sticker_background,
-            R.drawable.sticker_facepoint,
-            R.drawable.sticker_cat,
-            R.drawable.sticker_mikimouse,
-            R.drawable.sticker_minimouse,
-            R.drawable.sticker_hair
+            R.drawable.sticker_aral,
+            R.drawable.sticker_black_cat_ears,
+            R.drawable.sticker_bud_glasses,
+            R.drawable.sticker_devil_gauze_mask,
+            R.drawable.sticker_seeking_attention,
+            R.drawable.sticker_sunglasses,
+            R.drawable.sticker_yybear,
     };
+
+    //Gesture
+    //Gesture path
+    public static final String[] gesturesPath = new String[]{
+            "/orangefilter/effects/gesture_666.zip",
+            "/orangefilter/effects/gesture_baoquan.zip",
+            "/orangefilter/effects/gesture_heshi.zip",
+            "/orangefilter/effects/gesture_ok.zip",
+            "/orangefilter/effects/gesture_onehandheart.zip",
+
+            "/orangefilter/effects/gesture_palm.zip",
+            "/orangefilter/effects/gesture_thumbsup.zip",
+            "/orangefilter/effects/gesture_tuojv.zip",
+            "/orangefilter/effects/gesture_twohandheart.zip",
+            "/orangefilter/effects/gesture_yeah.zip",
+
+            "/orangefilter/effects/gesture_zhizhu.zip",
+
+    };
+
+    //gesture icon
+    public static final int[] resGesturesOption = new int[]{
+            R.drawable.gesture_666,
+            R.drawable.gesture_baoquan,
+            R.drawable.gesture_heshi,
+            R.drawable.gesture_ok,
+            R.drawable.gesture_onehandheart,
+
+            R.drawable.gesture_palm,
+            R.drawable.gesture_thumbsup,
+            R.drawable.gesture_tuojv,
+            R.drawable.gesture_twohandheart,
+            R.drawable.gesture_yeah,
+
+            R.drawable.gesture_zhizhu,
+    };
+
+    public static boolean isEnableGesture_666 = false;
+    public static boolean isEnableGesture_baoquan = false;
+    public static boolean isEnableGesture_heshi = false;
+    public static boolean isEnableGesture_ok = false;
+    public static boolean isEnableGesture_onehandheart = false;
+
+    public static boolean isEnableGesture_palm = false;
+    public static boolean isEnableGesture_thumbsup = false;
+    public static boolean isEnableGesture_tuojv = false;
+    public static boolean isEnableGesture_twohandheart = false;
+    public static boolean isEnableGesture_yeah = false;
+    public static boolean isEnableGesture_zhizhu = false;
+
+    public static String gesturePath_666 = "";
+    public static String gesturePath_baoquan = "";
+    public static String gesturePath_heshi = "";
+    public static String gesturePath_ok = "";
+    public static String gesturePath_onehandheart = "";
+
+    public static String gesturePath_palm = "";
+    public static String gesturePath_thumbsup = "";
+    public static String gesturePath_tuojv = "";
+    public static String gesturePath_twohandheart = "";
+    public static String gesturePath_yeah = "";
+    public static String gesturePath_zhizhu = "";
+
+    public static void disableAllGesture() {
+        isEnableGesture_666 = false;
+        isEnableGesture_baoquan = false;
+        isEnableGesture_heshi = false;
+        isEnableGesture_ok = false;
+        isEnableGesture_onehandheart = false;
+
+        isEnableGesture_palm = false;
+        isEnableGesture_thumbsup = false;
+        isEnableGesture_tuojv = false;
+        isEnableGesture_twohandheart = false;
+        isEnableGesture_yeah = false;
+        isEnableGesture_zhizhu = false;
+
+        // gesturePath_666 = "";
+        // gesturePath_baoquan = "";
+        // gesturePath_heshi = "";
+        // gesturePath_ok = "";
+        // gesturePath_onehandheart = "";
+        //
+        // gesturePath_palm = "";
+        // gesturePath_thumbsup = "";
+        // gesturePath_tuojv = "";
+        // gesturePath_twohandheart = "";
+        // gesturePath_yeah = "";
+        // gesturePath_zhizhu = "";
+    }
+
+    public static void initGesturePath(String dir) {
+        gesturePath_666 = dir + gesturesPath[0];
+        gesturePath_baoquan = dir + gesturesPath[1];
+        gesturePath_heshi = dir + gesturesPath[2];
+        gesturePath_ok = dir + gesturesPath[3];
+        gesturePath_onehandheart = dir + gesturesPath[4];
+
+        gesturePath_palm = dir + gesturesPath[5];
+        gesturePath_thumbsup = dir + gesturesPath[6];
+        gesturePath_tuojv = dir + gesturesPath[7];
+        gesturePath_twohandheart = dir + gesturesPath[8];
+        gesturePath_yeah = dir + gesturesPath[9];
+        gesturePath_zhizhu = dir + gesturesPath[10];
+    }
+
+    public static void enableGesture(int index, boolean result) {
+        switch (index) {
+            case 1:
+                isEnableGesture_666 = result;
+                break;
+            case 2:
+                isEnableGesture_baoquan = result;
+                break;
+            case 3:
+                isEnableGesture_heshi = result;
+                break;
+            case 4:
+                isEnableGesture_ok = result;
+                break;
+            case 5:
+                isEnableGesture_onehandheart = result;
+                break;
+            case 6:
+                isEnableGesture_palm = result;
+                break;
+            case 7:
+                isEnableGesture_thumbsup = result;
+                break;
+            case 8:
+                isEnableGesture_tuojv = result;
+                break;
+            case 9:
+                isEnableGesture_twohandheart = result;
+                break;
+            case 10:
+                isEnableGesture_yeah = result;
+                break;
+            case 11:
+                isEnableGesture_zhizhu = result;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static boolean isDisableAllGesture() {
+        return !isEnableGesture_666 && !isEnableGesture_baoquan && !isEnableGesture_heshi && !isEnableGesture_ok && !isEnableGesture_onehandheart &&
+                !isEnableGesture_palm && !isEnableGesture_thumbsup && !isEnableGesture_tuojv && !isEnableGesture_twohandheart && !isEnableGesture_yeah && !isEnableGesture_zhizhu;
+    }
 }

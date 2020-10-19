@@ -17,13 +17,16 @@ import android.widget.Toast;
 import com.orangefilter.OrangeFilter;
 import com.yy.orangefilter.test.bean.BeautyBean;
 import com.yy.orangefilter.test.bean.FilterBean;
+import com.yy.orangefilter.test.bean.GestureBean;
 import com.yy.orangefilter.test.bean.StickersBean;
 import com.yy.orangefilter.test.helper.OrangeHelper;
 import com.yy.orangefilter.test.ui.BeautyDialog;
 import com.yy.orangefilter.test.ui.FilterDialog;
+import com.yy.orangefilter.test.ui.GesturesDialog;
 import com.yy.orangefilter.test.ui.StickersDialog;
 import com.yy.orangefilter.test.utils.CameraUtil;
 import com.yy.orangefilter.test.utils.CameraView;
+import com.yy.orangefilter.test.utils.Constant;
 import com.yy.orangefilter.test.utils.GLTexture;
 
 import java.util.ArrayList;
@@ -58,7 +61,7 @@ import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_Fi
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_FilterWarmIntensity;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectParamType.EP_FilterWenNuanIntensity;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_BasicBeauty;
-import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_BasicBeauty5;
+import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_BasicBeautyClear;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_FilterAdaier;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_FilterAmorous;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_FilterClear;
@@ -85,7 +88,6 @@ import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_FilterT
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_FilterWarm;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_FilterWenNuan;
 import static com.yy.orangefilter.test.helper.OrangeHelper.EffectType.ET_SeniorBeautyType;
-import static com.yy.orangefilter.test.helper.OrangeHelper.VENUS_ALL;
 import static com.yy.orangefilter.test.utils.Constant.beautyClearOptionName;
 import static com.yy.orangefilter.test.utils.Constant.beautyHazyOptionName;
 import static com.yy.orangefilter.test.utils.Constant.beautyTypeClear;
@@ -93,13 +95,16 @@ import static com.yy.orangefilter.test.utils.Constant.beautyTypeHazy;
 import static com.yy.orangefilter.test.utils.Constant.filterEffectType;
 import static com.yy.orangefilter.test.utils.Constant.filterOptionName;
 import static com.yy.orangefilter.test.utils.Constant.filterType;
+import static com.yy.orangefilter.test.utils.Constant.gesturesPath;
 import static com.yy.orangefilter.test.utils.Constant.plasticOptionName;
 import static com.yy.orangefilter.test.utils.Constant.plasticType;
 import static com.yy.orangefilter.test.utils.Constant.resBeautyOption;
 import static com.yy.orangefilter.test.utils.Constant.resFilterOption;
+import static com.yy.orangefilter.test.utils.Constant.resGesturesOption;
 import static com.yy.orangefilter.test.utils.Constant.resPlasticOption;
 import static com.yy.orangefilter.test.utils.Constant.resStickerOption;
 import static com.yy.orangefilter.test.utils.Constant.stickerPath;
+import static com.yy.orangefilter.test.utils.OrangeHelper.VENUS_ALL;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
@@ -113,8 +118,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvPlastic;
     private TextView tvFilter;
     private TextView tvSticker;
+    private TextView tvGestures;
     private LinearLayout llBottom;
 
+    // private int mOFContext;
     private AlertDialog mDialog;
 
     private boolean isEnableBeautyHazy = true;
@@ -131,11 +138,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String oldstickerEffectPath = "";//old sticker path
     private boolean isReleaseOldSticker = false;
 
+    private boolean isEnableGesture = false;
+    private int selectIndex = 0;
+    private boolean selectResult = false;
+
     private List<BeautyBean> beautyHazyList = new ArrayList<>();
     private List<BeautyBean> beautyClearList = new ArrayList<>();
     private List<BeautyBean> plasticList = new ArrayList<>();
     private List<FilterBean> filterList = new ArrayList<>();
     private List<StickersBean> stickerList = new ArrayList<>();
+    private List<GestureBean> gesturesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,6 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvPlastic = findViewById(R.id.tvPlastic);
         tvFilter = findViewById(R.id.tvFilter);
         tvSticker = findViewById(R.id.tvSticker);
+        tvGestures = findViewById(R.id.tvGestures);
         llBottom = findViewById(R.id.ll_bottom);
         mCameraView = findViewById(R.id.cameraView);
 
@@ -194,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvPlastic.setOnClickListener(this::onClick);
         tvFilter.setOnClickListener(this::onClick);
         tvSticker.setOnClickListener(this::onClick);
+        tvGestures.setOnClickListener(this::onClick);
 
         // for render
         mCameraView.setDrawFrameCallback(360, 640, mDrawFrameCallback);
@@ -225,6 +239,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tvSticker:
                 llBottom.setVisibility(View.GONE);
                 showStickerDialog();
+                break;
+            case R.id.tvGestures:
+                llBottom.setVisibility(View.GONE);
+                showGesturesDialog();
                 break;
         }
     }
@@ -261,7 +279,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void initClearBeautyOption() {
         beautyClearList.clear();
-        OrangeHelper.enableEffect(ET_BasicBeauty5, true);
+        OrangeHelper.enableEffect(ET_BasicBeautyClear, true);
         BeautyBean originalBeauty =
                 new BeautyBean(getResources().getString(R.string.original), null, null,
                         R.drawable.beauty_original);
@@ -279,7 +297,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             beautyClearList.add(basicBeauty);
         }
 
-        OrangeHelper.enableEffect(ET_BasicBeauty5, false);
+        OrangeHelper.enableEffect(ET_BasicBeautyClear, false);
     }
 
     /**
@@ -348,6 +366,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             stickerList.add(stickersBean);
         }
         stickerList.add(0, new StickersBean(null, R.drawable.close, true));
+    }
+
+    /**
+     * 初始化手势贴纸
+     * inint gestures sticker option
+     */
+    private void initGestures() {
+        gesturesList.clear();
+        for (int i = 0; i < gesturesPath.length; i++) {
+            String effectPath = getFilesDir().getPath() + gesturesPath[i];
+            int thumb = resGesturesOption[i];
+            GestureBean gestureBean = new GestureBean(effectPath, thumb, false);
+            gesturesList.add(gestureBean);
+        }
+        Constant.initGesturePath(getFilesDir().getPath());
+        gesturesList.add(0, new GestureBean(null, R.drawable.close, true));
     }
 
     /**
@@ -465,8 +499,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new FilterDialog.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(int index) {
-                        if (index == 0) {
-                            //disable  filter
+                        if (index == 0) {//disable all filter
                             if (selectFilterType != null) {
                                 OrangeHelper.enableEffect(selectFilterType, false);
                             }
@@ -475,7 +508,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             selectEffectParamType = null;
                             filterVal = 0;
                         } else {
-                            //disable filter
                             if (selectFilterType != null) {
                                 oldselectFilterType = selectFilterType;
                                 OrangeHelper.enableEffect(oldselectFilterType, false);
@@ -565,6 +597,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onSeekChanged(OrangeHelper.EffectParamType effectParam, int value) {
                         selectEffectParamType = effectParam;
                         filterVal = value;
+                        // OrangeHelper.setEffectParam(effectParam, value);
                     }
 
                     @Override
@@ -615,10 +648,106 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         stickersDialog.show(getSupportFragmentManager());
     }
 
+    /**
+     * 手势贴纸弹窗
+     */
+    private void showGesturesDialog() {
+        if (gesturesList.size() == 0) {
+            llBottom.setVisibility(View.VISIBLE);
+            return;
+        }
+        GesturesDialog gesturesDialog = new GesturesDialog(gesturesList, new GesturesDialog.OnItemSelectedListener() {
+            @Override
+            public void onCleanSticker() {
+                isEnableGesture = false;
+                Constant.disableAllGesture();
+            }
+
+            @Override
+            public void onItemSelected(int index, boolean result) {
+                isEnableGesture = true;
+                Constant.enableGesture(index, result);
+                selectIndex = index;
+                selectResult = result;
+            }
+
+            @Override
+            public void onDialogDismiss() {
+                llBottom.setVisibility(View.VISIBLE);
+            }
+        });
+
+        gesturesDialog.show(getSupportFragmentManager());
+    }
+
+    private void enableGesture(int index, boolean result) {
+        switch (index) {
+            case 1:
+                OrangeHelper.enableGesture(Constant.gesturePath_666, result);
+                selectIndex = -1;
+                break;
+            case 2:
+                OrangeHelper.enableGesture(Constant.gesturePath_baoquan, result);
+                selectIndex = -1;
+                break;
+            case 3:
+                OrangeHelper.enableGesture(Constant.gesturePath_heshi, result);
+                selectIndex = -1;
+                break;
+            case 4:
+                OrangeHelper.enableGesture(Constant.gesturePath_ok, result);
+                selectIndex = -1;
+                break;
+            case 5:
+                OrangeHelper.enableGesture(Constant.gesturePath_onehandheart, result);
+                selectIndex = -1;
+                break;
+            case 6:
+                OrangeHelper.enableGesture(Constant.gesturePath_palm, result);
+                selectIndex = -1;
+                break;
+            case 7:
+                OrangeHelper.enableGesture(Constant.gesturePath_thumbsup, result);
+                selectIndex = -1;
+                break;
+            case 8:
+                OrangeHelper.enableGesture(Constant.gesturePath_tuojv, result);
+                selectIndex = -1;
+                break;
+            case 9:
+                OrangeHelper.enableGesture(Constant.gesturePath_twohandheart, result);
+                selectIndex = -1;
+                break;
+            case 10:
+                OrangeHelper.enableGesture(Constant.gesturePath_yeah, result);
+                selectIndex = -1;
+                break;
+            case 11:
+                OrangeHelper.enableGesture(Constant.gesturePath_zhizhu, result);
+                selectIndex = -1;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void disableAllGesture() {
+        OrangeHelper.enableGesture(Constant.gesturePath_666, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_baoquan, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_heshi, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_ok, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_onehandheart, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_palm, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_thumbsup, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_tuojv, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_twohandheart, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_yeah, false);
+        OrangeHelper.enableGesture(Constant.gesturePath_zhizhu, false);
+    }
+
     private CameraView.DrawFrameCallback mDrawFrameCallback = new CameraView.DrawFrameCallback() {
         @Override
-        public void onDrawFrame(GLTexture textureIn, GLTexture textureOut,
-                                CameraUtil.ReadedImage image) {
+        public void onDrawFrame(GLTexture textureIn, GLTexture textureOut, CameraUtil.ReadedImage image) {
 
             if (!OrangeHelper.isContextValid() || image.data == null) {
                 mCameraView.copyTexture(textureIn, textureOut);
@@ -627,7 +756,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             OrangeHelper.enableEffect(ET_BasicBeauty, isEnableBeautyHazy);//hazy
 
-            OrangeHelper.enableEffect(ET_BasicBeauty5, isEnableBeautyClear);//clear
+            OrangeHelper.enableEffect(ET_BasicBeautyClear, isEnableBeautyClear);//clear
 
             OrangeHelper.enableEffect(ET_SeniorBeautyType, isEnablePlastic);//plastic
 
@@ -646,6 +775,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 OrangeHelper.enableSticker(stickerEffectPath, false);
                 stickerEffectPath = "";
             }
+
+            //gestures
+            if (isEnableGesture) {
+                enableGesture(selectIndex, selectResult);
+            } else {
+                disableAllGesture();
+            }
+
+            Constant.isEnableGesture_baoquan = false;
+            Constant.isEnableGesture_heshi = false;
+            Constant.isEnableGesture_ok = false;
+            Constant.isEnableGesture_onehandheart = false;
+
+            Constant.isEnableGesture_palm = false;
+            Constant.isEnableGesture_thumbsup = false;
+            Constant.isEnableGesture_tuojv = false;
+            Constant.isEnableGesture_twohandheart = false;
+            Constant.isEnableGesture_yeah = false;
+            Constant.isEnableGesture_zhizhu = false;
 
             OrangeHelper.ImageInfo imageInfo = new OrangeHelper.ImageInfo();
             imageInfo.deviceType = 0;
@@ -685,14 +833,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 initFilterOption();
                 initPlasticOption();
                 initStickerOption();
+                initGestures();
             }
         }
 
         @Override
         public void onRelease() {
-            Log.i(TAG, "onRelease");
+            Log.e(TAG, "onRelease");
             //release source
+            // if (mOFContext != 0) {
             OrangeHelper.destroyContext();
+            // mOFContext = 0;
+            // }
 
             if (mDialog != null) {
                 mDialog.dismiss();

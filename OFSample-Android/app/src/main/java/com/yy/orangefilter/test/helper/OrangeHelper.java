@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.opengl.GLES20;
 import android.util.Log;
 
+import com.orangefilter.OrangeFilter;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,37 +17,36 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import com.orangefilter.OrangeFilter;
-
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
-// 注意：这个类仅仅是对OrangeFilter SDK API使用的一次封装，它是对SDK
-// API的二次封装，屏蔽了sdk的使用细节。尽量满足用户简化SDK使用的需求。
-// 该类建议直接引入用户项目使用。除非必要，不建议修改，因为后续开发方会随着sdk版本升级对该类进行增量更新，以优化用户的使用体验。
-// 如果用户有特殊的使用需求，依然可用参考该类的实现，使用OrangeFilterSDK的原生接口。
+// Note: This class is just a package for the OrangeFilter SDK API, it is for the SDK
+// The secondary encapsulation of API shields the usage details of SDK. Try to meet the needs of users to simplify the use of SDK.
+// This category is recommended to be directly introduced into user projects. Unless necessary, it is not recommended to modify, because subsequent developers will incrementally update this category with the upgrade of the SDK version to optimize the user experience.
+// If users have special requirements, they can still refer to the implementation of this class and use the native interface of OrangeFilterSDK.
 
 public class OrangeHelper {
     final private static String TAG = "OrangeHelper";
-    final private static String mSDK_VERSION = "1.4.7";
-    final public static int VENUS_NONE = 0; //不启用AI计算，无法使用高级美颜，贴纸，手势识别，背景分割
-    final public static int VENUS_FACE = 1; //启用高级美颜和贴纸
-    final public static int VENUS_GESTURE = 2; //启用手势识别，手势表情
-    final public static int VENUS_SEGMENT = 4;  //启用背景分割抠图
-    final public static int VENUS_ALL = 7;  //启用所有AI功能。
+    final private static String mSDK_VERSION = "1.5.4";
+    final public static int VENUS_NONE = 0; //Without AI calculation, advanced beauty, stickers, gesture recognition, background segmentation cannot be used
+    final public static int VENUS_FACE = 1; //Enable advanced beauty and stickers
+    final public static int VENUS_GESTURE = 2; //Enable gesture recognition, gesture expression
+    final public static int VENUS_SEGMENT = 4;  //Enable background split cutout
+    final public static int VENUS_ALL = 7;  //Enable all AI functions.
 
-    final public static int LG_Info = OrangeFilter.OF_LogLevel_Info; //普通消息
-    final public static int LG_Warn = OrangeFilter.OF_LogLevel_Warn; //警告
-    final public static int LG_Error = OrangeFilter.OF_LogLevel_Error; //错误
-    final public static int LG_Debug = OrangeFilter.OF_LogLevel_Debug; //错误
-    final public static int LG_Verbose = OrangeFilter.OF_LogLevel_Verbose; //所有日志
+    final public static int LG_Info = OrangeFilter.OF_LogLevel_Info; //Info level
+    final public static int LG_Warn = OrangeFilter.OF_LogLevel_Warn; //Warn level
+    final public static int LG_Error = OrangeFilter.OF_LogLevel_Error; //Error level
+    final public static int LG_Debug = OrangeFilter.OF_LogLevel_Debug; //Debug level
+    final public static int LG_Verbose = OrangeFilter.OF_LogLevel_Verbose; //Verbose level
 
-    public static String LogMsg = ""; //记录最近的一次错误信息。
-    private static Map<String, Integer> mEffectIds = new HashMap(); //内存已经加载的特效包
-    private static Vector<Integer> mEffectJobs = new Vector<>(); //生效的特效包
+    public static String LogMsg = ""; //Record the most recent error message.
 
-    private static String mEffectPackagePaths = ""; //特效包存放路径
-    private static String mVenusModlePath = ""; //VENUS AI计算依赖的模型数据文件存放路径。
-    private static int mOFContext = 0; //引擎句柄
+    private static Map<String, Integer> mEffectIds = new HashMap(); //Special effects package loaded in memory
+    private static Vector<Integer> mEffectJobs = new Vector<>(); //Effective special effects package
+
+    private static String mEffectPackagePaths = ""; //Special effect package storage path
+    private static String mVenusModlePath = ""; //The storage path of the model data file that the AI calculation depends on.
+    private static int mOFContext = 0;
     private static long mStartTime;
     private static OrangeFilter.OF_FrameData mFrameData;
     private static OrangeFilter.OF_Texture[] mInputs;
@@ -53,7 +54,7 @@ public class OrangeHelper {
     private static int[] mEffectJobIdsCache;
     private static int[] mEffectJobResultsCache;
 
-    //传递Opengl纹理参数的结构，该结构传递的纹理用于渲染。
+    //The structure of passing Opengl texture parameters, and the texture passed by the structure is used for rendering.
     public static class GLTexture {
         public int mTextureId; //OpenGL texture id
         public int mWidth; //OpenGL texture width.
@@ -62,43 +63,43 @@ public class OrangeHelper {
         private int mFormat = GLES20.GL_RGBA; //OpenGL texture format, e.g. GL_RGBA.
     }
 
-    //传递识别图像的参数结构，该结构传递的图像用于人脸及动作识别。
+    //Pass the parameter structure of the recognition image, and the image passed by the structure is used for face and action recognition.
     public static class ImageInfo {
-        public int deviceType; //图像类别，默认为相机图像0，用户自定义传入的三方sdk图像为1.
-        public int facePointDir; //当 deviceType == 1时，
-        // 该变量可以自由设置渲染特效的方向。否则使用底层默认的方向去渲染。默认方向是根据摄像头设备信息设置的。
-        public byte[] data; //用户传入的识别数据，通常是像素数据
-        public int dir; //图像的方向，通常用陀螺仪方向
-        public int orientation; //相机摄像头方向，通常从设备相机信息里获取，当输入为deviceType=1时，该值不生效。
-        public int width; //图像宽
-        public int height; //图像高
-        public int format; //图像格式
-        public boolean frontCamera; //是否是前置摄像头
-        private int timestamp = 0; //计算人脸识别的时间戳，单位秒，如果不设置，底层使用默认值。
+        public int deviceType; //Image category, the default is camera image 0, user-defined incoming tripartite sdk image is 1.
+        public int facePointDir; //When deviceType == 1, this variable can freely set the direction of rendering special effects.
+        // Otherwise, use the underlying default direction to render. The default direction is set according to the camera device information.
+        public byte[] data; //The identification data passed in by the user, usually pixel data
+        public int dir; //The direction of the image, usually the gyroscope direction
+        public int orientation; //The camera direction is usually obtained from the device camera information. When the input is deviceType=1, this value will not take effect.
+        public int width; //Image width
+        public int height; //Image high
+        public int format; //Image format
+        public boolean frontCamera; //Is it a front camera
+        private int timestamp = 0; //Calculate the timestamp for face recognition, in seconds, if not set, the bottom layer uses the default value.
 
         public void setTimeStamp(int tsp) {
             timestamp = tsp;
         }
     }
 
-    //特效参数结构体，用于查询参数
+    //Special effect parameter structure, used to query parameters
     public static class EffectParam {
-        public int curVal; //当前值
-        public int maxVal; //最大值
-        public int minVal; //最小值
-        public int defVal; //默认值
+        public int curVal; //The current value
+        public int maxVal; //Max
+        public int minVal; //Minimum
+        public int defVal; //Defaults
     }
 
     public enum EffectType {
-        ET_BasicBeauty, //基础美颜
-        ET_BasicBeautyType, //基础整形
-        ET_SeniorBeautyType, //高级整形
-        ET_FilterHoliday, //假日滤镜
-        ET_FilterClear, //清晰滤镜
-        ET_FilterWarm, //暖阳滤镜
-        ET_FilterFresh, //清新滤镜
-        ET_FilterTender, //粉嫩滤镜
-        ET_BasicBeauty5, //基础美颜（清晰磨皮）
+        ET_BasicBeauty, //Basic beauty
+        ET_BasicBeautyType, //Basic plastic surgery
+        ET_SeniorBeautyType, //Advanced plastic surgery
+        ET_FilterHoliday, //Holiday filter
+        ET_FilterClear, //Clear filter
+        ET_FilterWarm, //Warm filter
+        ET_FilterFresh, //Fresh filter
+        ET_FilterTender, //Tender filter
+        ET_BasicBeautyClear, //Basic beauty（Clear skin）
 
         //20款滤镜风格
         ET_FilterAdaier, //Adaier filter
@@ -121,9 +122,10 @@ public class OrangeHelper {
         ET_FilterCream, //Cream filter
         ET_FilterFilm, //Film filter
         ET_FilterMagazine, //Magazine filter
+
     }
 
-    final private static String[] mEffectDefaults = { //默认枚举支持的特效
+    final private static String[] mEffectDefaults = { //Special effects supported by default enumeration
             "beauty_basic.zip",
             "basicthinface.zip",
             "faceliftingopt.zip",
@@ -132,12 +134,12 @@ public class OrangeHelper {
             "filter_warm.zip",
             "filter_fresh.zip",
             "filter_tender.zip",
-            "beauty5_basic.zip",//清晰磨皮
+            "beauty5_basic.zip",//Clear skin
             //20款滤镜风格
             "lengse-adaier.zip",
             "lengse-danya.zip",
             "lengse-jiazhou.zip",
-            "lengse-muojito.zip",
+            "lengse-mojito.zip",
             "nuanse-fennen.zip",
             "nuanse-qingchun.zip",
             "nuanse-tianmei.zip",
@@ -156,31 +158,37 @@ public class OrangeHelper {
             "zhigan-zazhi.zip"
     };
 
+    private static String[] mEffectConfigs = { //customer configs effects 's paths.
+            null, null, null, null, null, null, null, null, null, //9
+            null, null, null, null, null, null, null, null, null,null, //10
+            null, null, null, null, null, null, null, null, null,null //10
+    };
+
     public enum EffectParamType {
-        EP_BasicBeautyIntensity, //基础美颜
-        EP_BasicBeautyOpacity, //基礎磨皮强度
-        EP_BasicBeautyIntensity5, //基础美颜（清晰）
-        EP_BasicBeautyOpacity5, //基础美颜(清晰磨皮)
-        EP_FilterHolidayIntensity, //假日滤镜强度
-        EP_FilterClearIntensity, //清晰滤镜强度
-        EP_FilterWarmIntensity, //暖阳滤镜强度
-        EP_FilterFreshIntensity, //清新滤镜强度
-        EP_FilterTenderIntensity, //粉嫩滤镜强度
-        EP_BasicTypeIntensity, //基础整形强度
-        EP_SeniorTypeThinFaceIntensity, //高级瘦脸
-        EP_SeniorTypeSmallFaceIntensity, //高级小脸
-        EP_SeniorTypeSquashedFaceIntensity, //高級瘦颧骨
-        EP_SeniorTypeForeheadLiftingIntensity, //高级额高
-        EP_SeniorTypeWideForeheadIntensity, //高级额宽
-        EP_SeniorTypeBigSmallEyeIntensity, //高级大眼
-        EP_SeniorTypeEyesOffsetIntensity, //高级眼距
-        EP_SeniorTypeEyesRotationIntensity, //高级眼角
-        EP_SeniorTypeThinNoseIntensity, //高级瘦鼻
-        EP_SeniorTypeLongNoseIntensity, //高级长鼻
-        EP_SeniorTypeThinNoseBridgeIntensity, //高级窄鼻梁
-        EP_SeniorTypeThinmouthIntensity, //高级小嘴
-        EP_SeniorTypeMovemouthIntensity, //高级嘴位
-        EP_SeniorTypeChinLiftingIntensity, //高级下巴
+        EP_BasicBeautyIntensity, //Basic beauty
+        EP_BasicBeautyOpacity, //Basic microdermabrasion strength
+        EP_BasicBeautyClearIntensity, //Basic beauty（Clear Skin）
+        EP_BasicBeautyClearOpacity, //Clear Skin
+        EP_FilterHolidayIntensity, //holiday
+        EP_FilterClearIntensity, //clear
+        EP_FilterWarmIntensity, //warm
+        EP_FilterFreshIntensity, //fresh
+        EP_FilterTenderIntensity, //pink
+        EP_BasicTypeIntensity, //basic plastic
+        EP_SeniorTypeThinFaceIntensity, //face
+        EP_SeniorTypeSmallFaceIntensity, //resize
+        EP_SeniorTypeSquashedFaceIntensity, //cheek
+        EP_SeniorTypeForeheadLiftingIntensity, //forehead
+        EP_SeniorTypeWideForeheadIntensity, //forehead
+        EP_SeniorTypeBigSmallEyeIntensity, //eye size
+        EP_SeniorTypeEyesOffsetIntensity, //distance
+        EP_SeniorTypeEyesRotationIntensity, //slant
+        EP_SeniorTypeThinNoseIntensity, //slim
+        EP_SeniorTypeLongNoseIntensity, //length
+        EP_SeniorTypeThinNoseBridgeIntensity, //btidge
+        EP_SeniorTypeThinmouthIntensity, //resize
+        EP_SeniorTypeMovemouthIntensity, //position
+        EP_SeniorTypeChinLiftingIntensity, //chin
 
         //20款滤镜风格
         EP_FilterAdaierIntensity,
@@ -203,20 +211,21 @@ public class OrangeHelper {
         EP_FilterCreamIntensity,
         EP_FilterFilmIntensity,
         EP_FilterMagazineIntensity
+
     }
 
     final private static String[] mEffectParamNames = {
-            "Intensity", //basic beauty
+            "Intensity", //Hazy
             "Opacity",
-            "Intensity",//清晰
+            "Intensity",//clear
             "Opacity",
             "Intensity", //filter
             "Intensity",
             "Intensity",
             "Intensity",
             "Intensity",
-            "Intensity", //basic beauty type
-            "ThinfaceIntensity", //senior beauty type
+            "Intensity", //basic plastic
+            "ThinfaceIntensity", //Senior plastic
             "SmallfaceIntensity",
             "SquashedFaceIntensity",
             "ForeheadLiftingIntensity",
@@ -259,13 +268,14 @@ public class OrangeHelper {
         }
         EffectType et = EffectType.ET_SeniorBeautyType;
         switch (ep) {
-            case EP_BasicBeautyOpacity5:
-            case EP_BasicBeautyIntensity5:
-                et = EffectType.ET_BasicBeauty5;
-                break;
             case EP_BasicBeautyIntensity:
             case EP_BasicBeautyOpacity: {
                 et = EffectType.ET_BasicBeauty;
+            }
+            break;
+            case EP_BasicBeautyClearIntensity:
+            case EP_BasicBeautyClearOpacity: {
+                et = EffectType.ET_BasicBeautyClear;
             }
             break;
             case EP_BasicTypeIntensity: {
@@ -378,7 +388,8 @@ public class OrangeHelper {
             }
             break;
         }
-        String path = mEffectPackagePaths + mEffectDefaults[et.ordinal()];
+        String path = null != mEffectConfigs[et.ordinal()] ? mEffectConfigs[et.ordinal()] :
+                mEffectPackagePaths + mEffectDefaults[et.ordinal()];
         int effectId = 0;
         if (mEffectIds.containsKey(path)) {
             effectId = mEffectIds.get(path);
@@ -394,7 +405,18 @@ public class OrangeHelper {
         if (0 == mOFContext) {
             return 0;
         }
-        int effectId = getEffectId(ep);
+        int tarId = getFilterIdByEffectId(getEffectId(ep), getFilterParamName(ep));
+        if (0 == tarId) {
+            LogMsg = "该变量所属的特效包尚未加载。" + ep.toString();
+            Log.e(TAG, LogMsg);
+        }
+        return tarId;
+    }
+
+    private static int getFilterIdByEffectId(int effectId, String filterParamName) {
+        if (0 == mOFContext) {
+            return 0;
+        }
         if (effectId > 0) {
             //获取特效包所有信息的结构体。
             OrangeFilter.OF_EffectInfo effectInfo = new OrangeFilter.OF_EffectInfo();
@@ -407,7 +429,6 @@ public class OrangeHelper {
             if (1 == effectInfo.filterCount) {
                 return effectInfo.filterList[0];
             }
-            String tarParamName = getFilterParamName(ep);
             int tarFilterId = 0;
             //每个特效包里包含多个脚本，每个脚本有自己的filterId，通过包里脚本的个数进行遍历。
             for (int i = 0; i < effectInfo.filterCount; ++i) {
@@ -420,7 +441,7 @@ public class OrangeHelper {
                     //获取当前变量的变量名
                     String paramName = OrangeFilter.getFilterParamName(mOFContext, filterId, j);
                     //匹配变量名和目标变量名，匹配成功返回目标变量所属的filterId（脚本实例id）
-                    if (paramName.equals(tarParamName)) {
+                    if (paramName.equals(filterParamName)) {
                         tarFilterId = filterId;
                         break;
                     }
@@ -431,7 +452,7 @@ public class OrangeHelper {
             }
             return tarFilterId;
         } else {
-            LogMsg = "该变量所属的特效包尚未加载。" + ep.toString();
+            LogMsg = "该变量所属的特效包尚未加载。" + filterParamName;
             Log.e(TAG, LogMsg);
         }
         return 0;
@@ -581,7 +602,6 @@ public class OrangeHelper {
                                         String resDir /*建议传null*/) {
         return createContext(activity, ofSerialNumber, venusType, resDir, false);
     }
-
     //创建美颜SDK，后续的所有操作都需要Context id作为输入参数。  resDir资源路径，建议设置null
     //bOnline set 'ture' if download effects form server. default false;
     public static boolean createContext(Context activity, String ofSerialNumber,
@@ -598,6 +618,10 @@ public class OrangeHelper {
         //设置授权文件的缓存路径，用于授权成功后本地授权缓存。
         final String ofLicenseName = "of_offline_license.license";
         String ofLicensePath = resDir + "/" + ofLicenseName;
+        //版本变化清理资源
+        //check sdk version ,if not equal current version delete data cache.
+        checkResourcesValid(activity, bDownloadEffectsOnline ?  null : mEffectPackagePaths,
+                mVenusModlePath + "/", ofLicensePath);
         //尝试拷贝资源包中的license
         File license = new File(ofLicensePath);
         if (!(license.exists() && license.isFile())) {
@@ -629,9 +653,6 @@ public class OrangeHelper {
         mOutputs = new OrangeFilter.OF_Texture[1]; //输出纹理队列，目前默认1张纹理
         mInputs[0] = new OrangeFilter.OF_Texture(); //申请内存
         mOutputs[0] = new OrangeFilter.OF_Texture(); //申请内存
-
-        //check sdk version ,if not equal current version delete data cache.
-        checkResourcesValid(activity, bDownloadEffectsOnline ?  null : mEffectPackagePaths, mVenusModlePath + "/");
 
         //解压effects包
         File effectDir = new File(mEffectPackagePaths);
@@ -730,7 +751,7 @@ public class OrangeHelper {
         return true;
     }
 
-    //销毁美颜SDK
+    //Destroy the OrangeFilter SDK
     public static boolean destroyContext() {
         if (0 == mOFContext) {
             LogMsg = "只有通过OrangeHelper.CreateContext方式创建的引擎，才可以使用DestroyContext接口。";
@@ -749,12 +770,19 @@ public class OrangeHelper {
         return true;
     }
 
-    //查询引擎是否可用
+    //Query engine is available
     public static boolean isContextValid() {
         return 0 != mOFContext;
     }
 
-    //开启或关闭某特效
+    //config effect enums references
+    public static void configEffectEnums(EffectType et, String effectFilePath) {
+        Log.i(TAG,
+                "customer config effect enums : " + et.toString() + " to effect path : " + effectFilePath);
+        mEffectConfigs[et.ordinal()] = effectFilePath;
+    }
+
+    //Turn a effect on or off
     public static boolean enableEffect(EffectType et, boolean bEnable) {
         if (0 == mOFContext) {
             LogMsg = "只有通过OrangeHelper.CreateContext方式创建的引擎，才可以使用enableOrangeEffect接口。";
@@ -766,11 +794,12 @@ public class OrangeHelper {
             Log.e(TAG, LogMsg);
             return false;
         }
-        String path = mEffectPackagePaths + mEffectDefaults[et.ordinal()];
+        String path = null != mEffectConfigs[et.ordinal()] ? mEffectConfigs[et.ordinal()] :
+                mEffectPackagePaths + mEffectDefaults[et.ordinal()];
         return enableEffect(path, bEnable);
     }
 
-    //释放某特效
+    //Release a effect
     public static boolean releaseEffect(EffectType et) {
         if (0 == mOFContext) {
             LogMsg = "只有通过OrangeHelper.CreateContext方式创建的引擎，才可以使用releaseOrangeEffect接口。";
@@ -782,11 +811,12 @@ public class OrangeHelper {
             Log.e(TAG, LogMsg);
             return false;
         }
-        String path = mEffectPackagePaths + mEffectDefaults[et.ordinal()];
+        String path = null != mEffectConfigs[et.ordinal()] ? mEffectConfigs[et.ordinal()] :
+                mEffectPackagePaths + mEffectDefaults[et.ordinal()];
         return releaseEffect(path);
     }
 
-    //开启或关闭某手势特效
+    //Turn on or off a gesture effect
     public static boolean enableGesture(String path, boolean bEnable) {
         if (0 == mOFContext) {
             LogMsg = "只有通过OrangeHelper.CreateContext方式创建的引擎，才可以使用enableOrangeGesture接口。";
@@ -796,12 +826,12 @@ public class OrangeHelper {
         return enableEffect(path, bEnable);
     }
 
-    //释放某手势特效包
+    //Release a gesture effects package
     public static boolean releaseGesture(String path) {
         return releaseEffect(path);
     }
 
-    //开启或关闭某贴纸特效
+    //Turn on or off a sticker effect
     public static boolean enableSticker(String path, boolean bEnable) {
         if (0 == mOFContext) {
             LogMsg = "只有通过OrangeHelper.CreateContext方式创建的引擎，才可以使用enableOrangeSticker接口。";
@@ -811,12 +841,12 @@ public class OrangeHelper {
         return enableEffect(path, bEnable);
     }
 
-    //释放某贴纸特效包
+    //Release a sticker effects package
     public static boolean releaseSticker(String path) {
         return releaseEffect(path);
     }
 
-    //获取某特效参数
+    //Get a special effect parameter
     public static int getEffectParam(EffectParamType ep) {
         if (0 == mOFContext) {
             return 0;
@@ -833,7 +863,7 @@ public class OrangeHelper {
         return 0;
     }
 
-    //获取某特效参数范围和默认值
+    //Get a special effect parameter range and default value
     public static boolean getEffectParamDetail(EffectParamType ep, EffectParam effectPram) {
         if (0 == mOFContext) {
             return false;
@@ -847,7 +877,7 @@ public class OrangeHelper {
                 return false;
             }
             float fArrange = param.maxVal - param.minVal;
-            effectPram.curVal = (int) (Math.round(param.val / fArrange * 100));
+            effectPram.curVal = (int) (param.val / fArrange * 100);
             effectPram.minVal = (int) (param.minVal / fArrange * 100);
             effectPram.maxVal = (int) (param.maxVal / fArrange * 100);
             effectPram.defVal = (int) (param.defVal / fArrange * 100);
@@ -856,7 +886,60 @@ public class OrangeHelper {
         return false;
     }
 
-    //设置某特效参数当前值
+    //get custom filter param, param default name is 'Intensity'
+    public static int getCustomFilterParam(String filterPath) {
+        if (0 == mOFContext) {
+            return 0;
+        }
+        if (mEffectIds.containsKey(filterPath)) {
+            int effectId = mEffectIds.get(filterPath);
+            if (effectId > 0) {
+                OrangeFilter.OF_Paramf param =
+                        (OrangeFilter.OF_Paramf) OrangeFilter.getFilterParamData(mOFContext,
+                                getFilterIdByEffectId(effectId, "Intensity"),
+                                "Intensity");
+                if (null != param && param.maxVal - param.minVal > 0) {
+                    return (int) (param.val / (param.maxVal - param.minVal) * 100);
+                }
+            }
+        }
+        LogMsg = "OrangeFilter.getCustomFilterParam获取数据出错， 没有找到该滤镜 " + filterPath;
+        Log.e(TAG, LogMsg);
+        return 0;
+    }
+
+    //set custom filter param, param default name is 'Intensity'
+    public static boolean setCustomFilterParam(String filterPath, int curVal) {
+        if (0 == mOFContext) {
+            return false;
+        }
+        if (mEffectIds.containsKey(filterPath)) {
+            int effectId = mEffectIds.get(filterPath);
+            if (effectId > 0) {
+                OrangeFilter.OF_Paramf param =
+                        (OrangeFilter.OF_Paramf) OrangeFilter
+                                .getFilterParamData(mOFContext, getFilterIdByEffectId(effectId,
+                                        "Intensity"), "Intensity");
+                if (null == param) {
+                    return false;
+                }
+                float val = curVal / 100.0f;
+                if (val > param.maxVal) {
+                    param.val = param.maxVal;
+                } else if (val < param.minVal) {
+                    param.val = param.minVal;
+                } else {
+                    param.val = val * (param.maxVal - param.minVal);
+                }
+                OrangeFilter.setFilterParamData(mOFContext, getFilterIdByEffectId(effectId,
+                        "Intensity"), "Intensity", param);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Set the current value of a special effect parameter
     public static boolean setEffectParam(EffectParamType ep, int curVal) {
         if (0 == mOFContext) {
             return false;
@@ -884,11 +967,12 @@ public class OrangeHelper {
         return false;
     }
 
-    //这个函数是！！！每帧！！！都需要刷新的，因为需要时刻知晓当前渲染纹理的信息。
-    //用户根据自己情况可以把这些代码集成到自己的项目中，这些参数最终会决定人脸识别等高级效果是否成功。
-    public static boolean updateFrameParams(GLTexture textureIn, //输入纹理
-                                            GLTexture textureOut, //输出纹理
-                                            ImageInfo image) { //相机采集的图像
+    //This function is! ! ! Every frame! ! ! Both need to be refreshed, because you need to know the current rendering texture information at all times.
+    //Users can integrate these codes into their own projects according to their own situation.
+    // These parameters will ultimately determine the success of advanced effects such as face recognition.
+    public static boolean updateFrameParams(GLTexture textureIn, //Input texture
+                                            GLTexture textureOut, //Output texture
+                                            ImageInfo image) { //Images captured by the camera
         if (0 == mOFContext) {
             return false;
         }
@@ -911,8 +995,8 @@ public class OrangeHelper {
                 mFrameData.faceFrameDataArr = new OrangeFilter.OF_FaceFrameData[0];
             }
         }
-        mFrameData.width = image.height; //这里没写错，就是反正写的
-        mFrameData.height = image.width; //这里没写错，就是反正写的
+        mFrameData.width = image.height; //It’s not wrong here, it’s written anyway
+        mFrameData.height = image.width; //It’s not wrong here, it’s written anyway
         mFrameData.widthStep = mFrameData.width;
         mFrameData.timestamp = image.timestamp > 0 ? image.timestamp :
                 (System.currentTimeMillis() - mStartTime) / 1000.0f;
@@ -922,40 +1006,43 @@ public class OrangeHelper {
         mFrameData.pickOn = false;
         mFrameData.pickResult = false;
 
-        //！！！下面信息很重要，会决定高级美颜效果是否生效，而且具体情况会根据用户的实际输入情况作出修改调整。！！！
-        //android摄像头默认OF_PixelFormat_NV21
-        // 格式，如果使用三方sdk，或者自己输入图片，需要用户根据实际输入image.data确认具体的格式。比如OF_PixelFormat_RGB32也是有可能的。
-        //格式输入错误，会导致无法正确识别人脸，手势等高级效果。
-        mFrameData.imageDeviceType = image.deviceType; //默认攝像頭采集圖像，常见用法
-        if (1 == mFrameData.imageDeviceType) { //这种模式下更加灵活，需要用户自己设置更多的参数，可以解决任何的图像输入情况，三方sdk接入的必备。
-            //这种参数从1.3.0版本开始支持。这种模式可以解决所有识别问题，但是设置参数交给用户来决定。会更灵活。
-            //设置人脸渲染结果的方向
-            mFrameData.facePointOrientation = image.facePointDir; //具体看用户设置
-            //设置图像识别方向
-            mFrameData.imageDir = image.dir; //可以用陀螺仪方向（左转90度0， 竖着正立1， 右转90度2， 倒立竖着3）
-            //设置渲染结果是否镜像
-            mFrameData.frontCamera = image.frontCamera; //调整识别结果是否需要水平翻转（镜像）
-            //设置用户自定义图像数据
-            mFrameData.imageData = image.data; //图像数据buff
-            //自定义图像数据格式
-            mFrameData.format = image.format; //android摄像头默认采集格式，不是摄像头输入的要注意。
+        //! ! ! The following information is very important and will determine whether the advanced beauty effect is effective,
+        // and the specific situation will be modified and adjusted according to the actual input of the user. ! ! !
+        //The android camera defaults to OF_PixelFormat_NV21 format. If you use the three-party SDK or enter the picture yourself,
+        // the user needs to confirm the specific format according to the actual input image.data. For example, OF_PixelFormat_RGB32 is also possible.
+        //If the format is entered incorrectly, advanced effects such as faces and gestures cannot be correctly recognized.
+        mFrameData.imageDeviceType = image.deviceType; //The default camera captures images, common usage
+        if (1 == mFrameData.imageDeviceType) { //This mode is more flexible and requires users to set more parameters by themselves,
+            // which can solve any image input situation, which is necessary for three-party SDK access.
+            //This parameter is supported from version 1.3.0. This mode can solve all recognition problems,
+            // but the setting parameters are left to the user to decide. Will be more flexible.
+            //Set the direction of the face rendering result
+            mFrameData.facePointOrientation = image.facePointDir; //See user settings
+            //Set image recognition direction
+            mFrameData.imageDir = image.dir; //You can use the gyroscope direction (turn left 90 degrees 0, stand upright 1, turn right 90 degrees 2, upside down 3)
+            //Set whether the rendering result is mirrored
+            mFrameData.frontCamera = image.frontCamera; //Adjust whether the recognition result needs to be flipped horizontally (mirror)
+            //Set user-defined image data
+            mFrameData.imageData = image.data; //Image data buff
+            //Custom image data format
+            mFrameData.format = image.format; //The default capture format of the android camera is not the camera input.
         } else {
-            //这种默认摄像头采集图像模式下，sdk已经做了很多情况的处理，简单易用。
-            mFrameData.orientation = image.orientation; //android摄像头硬件方向，从摄像头配置里获取（90， 270）
-            mFrameData.imageDir = image.dir; //可以用陀螺仪方向（左转90度0， 竖着正立1， 右转90度2， 倒立竖着3）
-            mFrameData.frontCamera = image.frontCamera; //调整识别结果是否需要水平翻转（镜像）
-            mFrameData.imageData = image.data; //图像数据buff
-            mFrameData.format = image.format; //android摄像头默认采集格式，不是摄像头输入的要注意。
+            //In this default camera capture image mode, the SDK has already done a lot of processing, simple and easy to use.
+            mFrameData.orientation = image.orientation; //Image direction (-90, 0, 90, 270)
+            mFrameData.imageDir = image.dir; //You can use the gyroscope direction (turn left 90 degrees 0, stand upright 1, turn right 90 degrees 2, upside down 3)
+            mFrameData.frontCamera = image.frontCamera; //Adjust whether the recognition result needs to be flipped horizontally (mirror)
+            mFrameData.imageData = image.data; //Image data buff
+            mFrameData.format = image.format; //The default capture format of the android camera is not the camera input.
         }
 
-        //向SDK请求识别图像
+        //Request recognition image from SDK
         int ret = OrangeFilter.prepareFrameData(mOFContext, mFrameData);
         if (OrangeFilter.OF_Result_Success != ret) {
             LogMsg = "OrangeFilter.prepareFrameData准备数据出错，返回 " + ret;
             Log.e(TAG, LogMsg);
             return false;
         }
-        //准备渲染特效包
+        //Prepare to render the special effects package
         int effectCount = mEffectJobs.size();
         if (null == mEffectJobIdsCache || mEffectJobIdsCache.length != effectCount) {
             mEffectJobIdsCache = new int[effectCount];
@@ -966,7 +1053,7 @@ public class OrangeHelper {
         while (i < count) {
             mEffectJobIdsCache[j++] = mEffectJobs.get(i++);
         }
-        //开始渲染图像
+        //Start rendering image
         ret = OrangeFilter.applyFrameBatch(mOFContext, mEffectJobIdsCache, mInputs, mOutputs,
                 mEffectJobResultsCache);
 
@@ -975,7 +1062,7 @@ public class OrangeHelper {
             Log.e(TAG, LogMsg);
             return false;
         }
-        //查询结果
+        //search result
         count = mEffectJobResultsCache.length;
         for (i = 0; i < count; ++i) {
             if (mEffectJobResultsCache[i] > 0) {
@@ -986,8 +1073,8 @@ public class OrangeHelper {
         return true;
     }
 
-    //查询贴纸的每一帧返回结果，可以在updateFrameParams调用结束后调用。
-    //[in]stickerPaths 需要查询的贴纸特效包。  [out]stickerResults查询的对应特效包的返回值。
+    //The result of each frame of the query sticker can be called after the updateFrameParams call ends.
+    //[in]stickerPaths The sticker special effect package to be queried. [out] The return value of the corresponding special effect package of the stickerResults query.
     public static boolean checkStickerResult(String[] stickerPaths, int[] stickerResults) {
         if (0 == mOFContext) {
             return false;
@@ -1026,15 +1113,15 @@ public class OrangeHelper {
         return true;
     }
 
-    //設置日志級別,成功返回true
-    //以下为日志掩码，用户可以自己‘或’组合使用
+    //Set the log level, return true if successful
+    //The following is the log mask, users can use a combination of ‘or’
     /*
-        OrangeFilter.OF_LogLevel_Info; //普通消息
-        OrangeFilter.OF_LogLevel_Warn; //警告
-        OrangeFilter.OF_LogLevel_Error; //错误
-        OrangeFilter.OF_LogLevel_Verbose; //所有日志
+        OrangeFilter.OF_LogLevel_Info; //Info
+        OrangeFilter.OF_LogLevel_Warn; //Warn
+        OrangeFilter.OF_LogLevel_Error; //Error
+        OrangeFilter.OF_LogLevel_Verbose; //Verbose
     * */
-    //可以传递0关闭所有日志，不建议使用，无法定位错误。SDK默认输出 普通消息+警告+错误
+    //You can pass 0 to close all logs. It is not recommended and cannot locate errors. The SDK outputs normal message + warning + error by default
     public static boolean setLogLevel(int logLevel) {
         if (0 == mOFContext) {
             return false;
@@ -1042,9 +1129,9 @@ public class OrangeHelper {
         return OrangeFilter.OF_Result_Success == OrangeFilter.setLogLevel(logLevel);
     }
 
-    //重定向日志输出，用户可以使用listener里面的 logCallBackFunc 将所需日志重定向输出。
-    //比如某些三方的sdk会截获android的默认日志，这个时候用户可能会重定向OrangeFilter的日志。
-    //用户需要实现OF_LogListener接口里面的logCallBackFunc， 其他接口为向下兼容接口，可以忽略。
+    //To redirect log output, users can use logCallBackFunc in the listener to redirect the required log output.
+    //For example, some third-party SDKs will intercept the default log of android. At this time, the user may redirect the log of OrangeFilter.
+    //Users need to implement logCallBackFunc in OF_LogListener interface, other interfaces are downward compatible interfaces and can be ignored.
     public static boolean setLogCallback(OrangeFilter.OF_LogListener logListener) {
         if (0 == mOFContext) {
             return false;
@@ -1055,12 +1142,20 @@ public class OrangeHelper {
         return false;
     }
 
-    private static void checkResourcesValid(Context activity, String effectPath, String venusPath) {
+    private static void checkResourcesValid(Context activity, String effectPath, String venusPath,
+                                            String ofLicensePath) {
         SharedPreferences pf = getDefaultSharedPreferences(activity);
         final String configKey = "setup_ofsdk_version";
         final String buildVersion = mSDK_VERSION;
         Log.i(TAG, "to delete effects and venus directory ....");
         if (!pf.getString(configKey, "-1").equals(buildVersion)) {
+            //delete license
+            if (null != ofLicensePath) {
+                File file = new File(ofLicensePath);
+                if (file.isFile()) {
+                    file.delete();
+                }
+            }
             //delete dir
             if (null != effectPath) {
                 File dir = new File(effectPath);

@@ -1,39 +1,43 @@
-# Preface
-This demo shows how to use OrangeFilter SDK on Android; the data source is camera data;
-Directory structure explanation:
-- assets/effects:Store all beauty-related effects packages
-- java/com/yy/orangefilter/test:Store logic code
-
-
 # Overview
+This demo shows how to implement effects, such as beauty, plastic surgery, filters, stickers, and gestures, through OrangeFilter SDK on Android device. Directory structure explanation:
 
-This demo shows how to use OrangeFilter SDK to achieve special effects such as beauty, plastic surgery, filters, stickers, and gestures. The special effects package includes beauty, filters, shaping, stickers, gestures, and background segmentation. The corresponding relationship between the special effects package and functions is as follows:
+- assets/effects: Store all beauty-related effects packages
+- java/com/yy/orangefilter/test: Store logic codes
 
-| Special effects package | Special effects package | Is the intensity adjustable |
+ The effects supported are as follows:
+
+| Effect Package | Function | Adjustable or not |
 | ---:| :--- | ---:|
-| Beauty | Whitening, skin beautification (dermabrasion) | YES |
-| Filter | One filter package corresponds to one type of filter | YES |
-| Plastic surgery | Narrow face, small face, thin jawbone, forehead height, forehead width, big eyes, eye distance, eye corners, thin nose, long nose, narrow nose, small mouth, mouth position, chin | YES | 
-| Stickers | A special effects package corresponds to a sticker | NO |
-| Gesture | 11 kinds of gesture recognition, including v, like, heart (including one-handed, two-handed), Spider-Man, lift, 666, hold a fist, open palms with five fingers, put together, and OK; the demo only shows some of them. | NO |
-| Background segmentation | Human body contour detection, other special effects can be further used after human body contour and background segmentation | NO |
+| Beauty | Brighten, smooth Skin | Yes |
+| Filter | One filter package corresponds to one type of filter | Yes |
+| Shaping | Face slimming/shrinking, eye enlargement/distancing, forehead height/width, nose shape and lip shape adjustments | Yes |
+| Sticker | An effects package corresponds to a type of a sticker | No |
+| Gesture | 11 kinds of gesture recognition—including victory, thumbs-up, (one or two-handed) heart sign, Spiderman, holding, hang loose, deference, open palm, clasped palms, and OK. | No |
+| Background Segmentation | Detection body contour and separate someone from the background, and then you can replace the backgrounds with desired effects | No |
+| Makeup | No makeup starts on air, with makeup on the mirror | No |
 
 
-# 1 How to use
+# 1 Quick Start
 
-## 1.1 Development environment requirements
+## 1.1 Prerequisite
 - Android Studio 2.0 and above.
 - Android 4.0 (SDK API 14+) and above.
-## 1.2 Integrated SDK
-- Copy the aar package to libs.
-- Introduce the aar package in build.gradle and add the code:
+## 1.2 Integrate the SDK
+1. Copy the aar package to libs.
+2. Add the aar package in ***build.gradle*** and add the code:
+
 ```objc
   implementation fileTree(dir: 'libs', include: ['*.aar'])  
 ```
-- Copy the OrangeHelper class to your own project, and subsequent interface calls are dependent on this class.
-- Put the special effects package in main/assets/effects
-- If the resource is downloaded dynamically, you need to pay attention to the download location: custom path +/orangefilter/effects/; it needs to be placed under this path. When using OrangeHelper, pass in the custom path.
-- Add permissions to the AndroidManifest file.
+3. Copy the OrangeHelper class to your own project, and the interface calls are dependent on it.
+
+4. Put the the effect package in the directory ***main/assets/effects***.
+
+   > **Note:**
+   >
+   > The path to save dynamically downloaded resources is: ***custom path +/orangefilter/effects/***. And the ***custom path*** should be set when using `OrangeHelper`.
+
+5. Add permissions to the AndroidManifest file.
 ```objc
     <!--Camera permissions-->
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -47,229 +51,225 @@ This demo shows how to use OrangeFilter SDK to achieve special effects such as b
 ```
 
 
-## 1.3 Create OrangeFilter SDK engine environment
+## 1.3 Create an Engine Environment
 
 ```objc
     OrangeHelper.createContext(context, ofSerialNumber, aiType, resDir);
 ```
-Parameter explanation:
+**Parameters** 
 
 | Parameter | Description |
 | :--- | :--- |
 | context | Context |
-| ofSerialNumber | Authorized serial number, obtained when OrangeFilter is purchased |
-| aiType | There are five types, namely: VENUS_NONE (not enable AI calculation), VENUS_FACE (enable advanced beauty and stickers), VENUS_GESTURE (enable gesture recognition, gesture expression), VENUS_SEGMENT (enable background segmentation cutout), VENUS_ALL (enable all AI functions) ); For details, please refer to the OrangeHelper class annotation description. |
-| resDir | The root path of resource storage, including special effects packages, AI model files, etc. If the path of venus_models or special effects packages is changed, please make sure that the incoming resDir path is correct |
+| ofSerialNumber | Serial number for authentication, obtained when OrangeFilter is purchased |
+| aiType | AI effect type:<br>“VENUS_NONE”- basic beautification, disable AI calculation<br>"VENUS_FACE"- advanced beauty and stickers<br> VENUS_GESTURE- basic beautification and gesture recognition<br> VENUS_SEGMENT-basic beautification and background segmentation<br>VENUS_ALL -enbale AI functions |
+| resDir | Resource storage root path; includes effect package, venus model files, and cache authorization information; default value is activity.getFilesDir().getPath(); null input is recommended |
 
-## 1.4 Release OrangeFilter SDK engine environment resources
+## 1.4 Release Engine Resources
 
 ```objc
     OrangeHelper.destroyContext();
 ```
 > **Note**
 
->  After the resources are released, the beauty will be unavailable. If you need to use it, you need to recreate the engine environment.
+>  After releasing the resource, the beautification effects are unavailable. You can reusing it by recreating an engine environment.
 
-## 1.5 Rendering special effects per frame
+## 1.5 Rendering Effects Frame by Frame
 ```objc
     OrangeHelper.updateFrameParams(textureIn, textureOut, imageInfo);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| textureIn | Encapsulation example of input texture information, refer to [GLTexture](#GLTexture) |
-| textureOut | Package example of output texture information, refer to [GLTexture](#GLTexture) |
-| imageInfo | To identify the package example of image information, refer to [ImageInfo](#ImageInfo) |
+| textureIn | Input texture encapsulated instance, refer to [GLTexture](#GLTexture) |
+| textureOut | Output texture encapsulated instance, refer to [GLTexture](#GLTexture) |
+| imageInfo | Image recognition encapsulated instance, refer to [ImageInfo](#ImageInfo) |
 
 > **Note**
+> - Each frame needs to be refreshed for getting the the current texture rendering information.
+> -  Returne false for failure. Make sure the effect is enabled.
 
-> - Every frame needs to be refreshed, because the current rendering texture information needs to be known at all times.
-
-> - If false is returned, the data frame rendering fails. The reason may be that no special effects are enabled.
-
-## 1.6 Turn on and off beauty, filters, one-click plastic surgery, and advanced plastic surgery
+## 1.6 Enable/Disable Effects
+Enable/disable beauty, filters, basic and advanced shaping.
 
 ```objc
     OrangeHelper.enableEffect(effectType, bEnable);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| effectType | There are 8 enumeration types [EffectType](#EffectType), respectively, see EffectType of OrangeHelper class for details. |
-| bEnable | Whether to open. If it is the first call, pass false and the special effect resource pack will not be loaded. |
+| effectType | Effect type, see details in [EffectType](#EffectType) |
+| bEnable | Whether to enable. When called for the first time and passing false, the effect is not loaded. |
 
-> **Note**
+> **Note:**
+>
+> When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded, and you cannot get the actual parameters by calling `getEffectParam` and `getEffectParamDetail`.
 
-> If the enabled parameter is passed false, if it is the first call, the special effect resource package will not be loaded. After that, calling getEffectParam and getEffectParamDetail will not get the real value, because the current resource special effect package has not been loaded, and the parameter values inside cannot be obtained.
-
-## 1.7 Intensity adjustment of beauty, filters, one-key shaping, advanced shaping
-
+## 1.7 Adjust Effect Intensity
+Adjust the effect intensity of beautification, filter, shaping, etc.
 ```objc
     OrangeHelper.setEffectParam(effectParamType, curVal);
 ```
-Parameter explanation:
+**Parameter **
 
 | Parameter | Description |
 | :--- | :--- |
-| effectParamType | [EffectParamType](#EffectParamType)enumeration, there are 22 kinds in total, adjust the corresponding function, and input the corresponding enumeration value. See the EffectParamType description of the OrangeHelper class for details. |
-| curVal | The set value and the value range corresponding to different functions are different, please refer to [EffectParamType](#EffectParamType). |
+| effectParamType | Effect parameters ,see details in [EffectParamType](#EffectParamType) |
+| curVal | Effect parameter value to be set; the value range of each parameter is different, see details in  [EffectParamType](#EffectParamType). |
 
-## 1.8 Get the current intensity value of the special effect
+## 1.8 Get the Current Effect Intensity 
 ```objc
     OrangeHelper.getEffectParam(effectParamType);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| effectParamType | There are 22 types of [EffectParamType](#EffectParamType) enumeration. For details, see the description of EffectParamType of the OrangeHelper class. |
+| effectParamType | Effect parameters, see details in [EffectParamType](#EffectParamType) |
 
-> **Note**
+> **Note:**
+>
+> If the effect is released, disabled, or not initialized, you should load it before getting the effect parameters.
 
-> If the corresponding special effect has not been initialized, has not been turned on, or has been released, no value can be obtained. Need to reload to open.
-
-## 1.9 Get a special effect parameter range and default value
+## 1.9 Get the Value Range and Default Value of an Effect Parameter
 ```objc
-    OrangeHelper.getEffectParamDetail(effectParamType, effectParam);
+OrangeHelper.getEffectParamDetail(effectParamType, effectParam);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| effectParamType | There are 22 kinds of [EffectParamType](#EffectParamType) enumeration. For details, please refer to the description of EffectParamType of OrangeHelper class. |
-| effectParam | [EffectParam](#EffectParam),the return value, which contains the maximum value, minimum value, current value and default value. |
+| effectParamType | Effect parameters, see details in [EffectParamType](#EffectParamType) |
+| effectParam | Effect parameter vaules, including the maximum value, minimum value, current value and default value. See details in [EffectParam](#EffectParam) |
 
 > **Note**
+>
+> If the effect is released, disabled, or not initialized, you should load it before getting the effect parameters.
 
-> If the corresponding special effect has not been initialized, has not been turned on, or has been released, no value can be obtained. Need to reload to open.
 
-
-## 1.10 Release of resources for beauty, filters, one-click plastic surgery, and advanced plastic surgery
+## 1.10 Release Resources
 
 ```objc
     OrangeHelper.releaseEffect(EffectType et);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| effectType | There are 8 enumeration types [EffectType](#EffectType), respectively, see EffectType of OrangeHelper class for details. |
+| effectType | Effect type, see details in [EffectType](#EffectType) |
 
 > **Note**
+>
+> This API is not recommended to use.
 
-> It is not recommended to use the SDK to release resources, because beauty, filters, one-click plastic surgery, and advanced plastic surgery are commonly used functions and consume low resources.
-
-## 1.11 Turning on and off the sticker
+## 1.11 Enbale/Disable Sticker
 
 ```objc
     OrangeHelper.enableSticker(path, bEnable);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| path | The absolute path of the sticker special effect package must be correct, otherwise the special effect package cannot be loaded. |
-| bEnable | Whether to open the sticker. |
+| path | The absolute path of the sticker |
+| bEnable | Whether to enable the sticker |
 
 > **Note**
+>
+> - If path is incorrect, loading the effect will fail.
+> - When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded.
 
-> - The path must be correct, otherwise the loading of special effects will not succeed.
-
-> - If the enabled parameter is passed false, if it is the first call, the special effect resource pack will not be loaded.
-
-## 1.12 Resource release of stickers
+## 1.12 Resource Sticker Release
 
 ```objc
     OrangeHelper.releaseSticker(path);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| path | The path path is an absolute path and needs to be passed correctly, otherwise it will be released incorrectly or failed.  |
+| path | The absolute path of the sticker  |
 
 > **Note**
+>
+> If path is incorrect, releasing resources will fail.
 
-> The path path is an absolute path and needs to be passed correctly, otherwise it will be released incorrectly or failed. 
-
-## 1.13 Query the execution result of the sticker
+## 1.13 Search for the Sticker Execution Results
 ```objc
     OrangeHelper.checkStickerResult(String[] stickerPaths, int[] stickerResults);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| stickerPaths | The path array of the sticker special effect package to be queried. |
-| stickerResults | The result return value of the query corresponding special effect package. |
+| stickerPaths | Full path of the sticker effect to be searched for |
+| stickerResults | Return value |
 
 > **Note**
+>
+> This API should be called after calling updateFrameParams.
 
-> The result of each frame of the query sticker can be called after the updateFrameParams call ends. The general usage scenario of this interface is: a certain sticker animation effect needs to be released after use, which can be used as a monitor，See the error code on the official website for details.
-
-## 1.14 Turn on and off gestures
+## 1.14 Enable/Disable Gesture
 
 ```objc
     OrangeHelper.enableGesture(path, bEnable);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| path | The absolute path of the gesture special effect package must be correct, otherwise the special effect package cannot be loaded. |
+| path | The absolute path of the gesture effect |
 | bEnable | Whether to enable the gesture. |
 
-> **Note**
+> **Note:**
+>
+> - If path is incorrect, loading gestures will fail.
+> - When this API is first called with parameter **bEnable** set to **false**, the effects package will not be loaded.
 
-> - The path must be correct, otherwise the loading of gesture effects will fail.
-
-> - If the enabled parameter is passed false, if it is the first call, the special effect resource pack will not be loaded.
-
-## 1.15 Gesture resource release
+## 1.15 Release Gesture Resources
 
 ```objc
     OrangeHelper.releaseGesture(path);
 ```
-Parameter explanation:
+**Parameter**
 
 | Parameter | Description |
 | :--- | :--- |
-| path | The path path is an absolute path and needs to be passed correctly, otherwise it will be released incorrectly or failed. |
+| path | The absolute path of the gesture effect |
 
-> **注意**
+> **Note:**
+> If path is incorrect, releasing resources will fail.
 
-> The path path is an absolute path and needs to be passed correctly, otherwise it will be released incorrectly or failed.
-
-## 1.16 Check whether the engine environment is available
+## 1.16 Check Whether the engine environment is Available
 
 ```objc
     OrangeHelper.isContextValid();
 ```
-Return value:
-true：available；false： not available
+**Return Value**
+"true"-available；"false"- not available
 
-## 1.17 Set log level
+## 1.17 Set Log Level
 
 ```objc
     OrangeHelper.setLogLevel(logLevel);
 ```
-You can pass 0 to close all logs. For details, refer to the description of setLogLevel in the OrangeHelper class.
+You can set it to  0 to close all logs. 
 
-## 1.18 Structure definition and enumeration
+## 1.18 Redirect the Log Output
 
 ```objc
     OrangeHelper.setLogCallback(OrangeFilter.OF_LogListener logListener)
 ```
-## 1.19 Obfuscation settings
+## 1.19 Obfuscation Settings
 If there is a confusion setting, add the following code to the proguard-rules file:
 
 ```objc
     -keep class com.orangefilter.**  {*;}
 ```
 
-# 2 Structure definition and enumeration
+# 2 Structure and Enumeration
 
 ## EffectParamType
 
@@ -340,7 +340,7 @@ If there is a confusion setting, add the following code to the proguard-rules fi
         public int dir; //The direction of the image, usually the gyroscope direction
         public int orientation; //The camera direction is usually obtained from the device camera information. When the input is deviceType=1, the value will not take effect.
         public int width; //Image width
-        public int height; //Image high
+        public int height; //Image height
         public int format; //Image format
         public boolean frontCamera; //Is it a front camera
         private int timestamp = 0; //Calculate the timestamp of face recognition, in seconds, if not set, the bottom layer uses the default value.
@@ -363,7 +363,7 @@ If there is a confusion setting, add the following code to the proguard-rules fi
     }
 ```
 
-## 特效包命名
+## Effect Package Name
 
 ```objc
     String[] mEffectDefaults = {
@@ -379,30 +379,31 @@ If there is a confusion setting, add the following code to the proguard-rules fi
     };
 ```
 
-# SDK V1.4Upgrade process
+# 3 Upgrade Method
 
-Step 1: Delete the old aar package and replace the new aar package.
+The method to upgrade the SDK to version 1.4 is as below.
+
+Step 1: Replace the old aar package with the new one.
 
 Step 2: Replace the venus model.
->    **Description**
->    - If you use OrangeHelper to create the environment, you can delete the venusmodel files and folders under assets, and the Android side has been integrated into the SDK
-       inside.
->    - If OrangeHelper is not used, you can refer to the createContext method of OrangeHelper to view the venus_model path setting.
+>    **Note:**
+>
+>    - If the engine environment is created by the OrangeHelper , you can delete the venus model in the file ***assets***.
+>    - If not, you can see path settings of the venus_model in the **createContext** of **OrangeHelper**.
 
-Step 3 (optional operation): Add the Face_Key_Points_5.vnmodel file and path. If you don't use the OrangeHelper class, because the venus models corresponding to the face have added a Face_Key_Points_5.vnmodel file, you need to add the corresponding path to the place where the Venus models are loaded, otherwise it will load some special effects packages and crash.
->    **Description**
+Step 3: (optional) Add the ***Face_Key_Points_5.vnmodel*** file and path. 
 
->    If you use the OrangeHelper class, ignore this one.
+Since a ***face_key_POINts_5.vnModel*** file is added to the face corresponding Venus Models, the path to which the Venus models have been loaded needs to be added. If the OrangeHelper class is not used, a crash occurs when loading effects package.
 
-Step 4 (optional operation): Update the special effects package.
+>    **Note:** If the OrangeHelper class is used, ignore this step.
 
->    **Description**
+Step 4: (optional) Update the special effects package.
 
->   There is no need to update the special effect package for version 1.2. For versions before 1.2, please contact the technical support of Jocloud to update the corresponding special effect package.
+>    **Note:** For the SDK of version 1.2, there is no need to update the special effects package. For the version earlier than 1.2, please contact the Technical support for help.
 
-Step 5: Modify the name of the plastic, advanced plastic, and filter special effects package.
+Step 5: Edit the effect package name.
 
->    **Description**
-
->   - To modify the rules, see mEffectDefaults of the OrangeHelper class. If you use the original interface instead of the OrangeHelper class, you can leave it unchanged.
->   - When upgrading, if you use the OrangeHelper class, in the onDrawFrame method, the original use requires width and height exchange. If you use OrangeHelper, you don't need to exchange width and height, and OrangeHelper will do the corresponding processing internally.
+> **Note:**
+>    
+> - If the the **OrangeHelper** class is not used, you can ignore the step.
+> - If the OrangeHelper class is used when upgrading, the process of width and height exchange is no need which is required in the old version.
